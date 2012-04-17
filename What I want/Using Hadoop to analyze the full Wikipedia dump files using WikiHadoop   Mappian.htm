@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<!-- saved from url=(0106)http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/ -->
+<html dir="ltr" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop | Mappian</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="stylesheet" type="text/css" media="all" href="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/style.css">
+<link rel="pingback" href="http://www.mappian.com/blog/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="Mappian » Feed" href="http://www.mappian.com/blog/feed/">
+<link rel="alternate" type="application/rss+xml" title="Mappian » Comments Feed" href="http://www.mappian.com/blog/comments/feed/">
+				
+	<script type="text/javascript" async="" src="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/ga.js"></script><script type="text/javascript">//<![CDATA[
+	// Google Analytics for WordPress by Yoast v4.2.3 | http://yoast.com/wordpress/google-analytics/
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount','UA-16951273-1']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+	//]]></script>
+<link rel="alternate" type="application/rss+xml" title="Mappian » Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop Comments Feed" href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/feed/">
+<link rel="stylesheet" id="twttrStylesheet-css" href="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/style(1).css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-stats-css" href="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/stats-css.css" type="text/css" media="all">
+<script type="text/javascript" src="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/jquery.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var QCAjax = {"ajaxurl":"http:\/\/www.mappian.com\/blog\/wp-admin\/admin-ajax.php","nonce":"ab7cc8c17b","nextquote":"Next quote\u00a0\u00bb","loading":"Loading...","error":"Error getting quote","auto_refresh_max":"30","auto_refresh_count":"0"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/quotes-collection.js"></script>
+<script type="text/javascript" src="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/comment-reply.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.mappian.com/blog/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.mappian.com/blog/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Configuring Cassandra multinode on Ubuntu 10.10" href="http://www.mappian.com/blog/nosql/configuring-cassandra-multinode-on-ubuntu-10-10/">
+<link rel="next" title="Twittering to End Dictatorship: Ensuring the Future of Web-based Social Movements" href="http://www.mappian.com/blog/twitter/twittering-to-end-dictatorship-ensuring-the-future-of-web-based-social-movements/">
+<meta name="generator" content="WordPress 3.3.1">
+<link rel="canonical" href="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian.htm">
+<link rel="shortlink" href="http://www.mappian.com/blog/?p=26">
+<link type="text/css" rel="stylesheet" href="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/microdata.css">
+<link rel="hub" href="http://pubsubhubbub.appspot.com/"><link rel="hub" href="http://superfeedr.com/hubbub">	<link rel="stylesheet" type="text/css" href="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/quotes-collection.css">
+	</head>
+
+<body class="single single-post postid-26 single-format-standard">
+<div id="wrapper" class="hfeed">
+	<div id="header">
+		<div id="masthead">
+			<div id="branding" role="banner">
+								<div id="site-title">
+					<span>
+						<a href="http://www.mappian.com/blog/" title="Mappian" rel="home">Mappian</a>
+					</span>
+				</div>
+				<div id="site-description">My pet projects are running loose here…</div>
+
+										<img src="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/path.jpg" width="940" height="198" alt="">
+								</div><!-- #branding -->
+
+			<div id="access" role="navigation">
+			  				<div class="skip-link screen-reader-text"><a href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/#content" title="Skip to content">Skip to content</a></div>
+								<div class="menu"><ul><li><a href="http://www.mappian.com/blog/" title="Home">Home</a></li><li class="page_item page-item-2"><a href="http://www.mappian.com/blog/about/">About</a></li><li class="page_item page-item-39"><a href="http://www.mappian.com/blog/papers-and-presentations/">Papers &amp; presentations</a></li></ul></div>
+			</div><!-- #access -->
+		</div><!-- #masthead -->
+	</div><!-- #header -->
+
+	<div id="main">
+
+		<div id="container">
+			<div id="content" role="main">
+
+			
+
+				<div id="nav-above" class="navigation">
+					<div class="nav-previous"><a href="http://www.mappian.com/blog/nosql/configuring-cassandra-multinode-on-ubuntu-10-10/" rel="prev"><span class="meta-nav">←</span> Configuring Cassandra multinode on Ubuntu 10.10</a></div>
+					<div class="nav-next"><a href="http://www.mappian.com/blog/twitter/twittering-to-end-dictatorship-ensuring-the-future-of-web-based-social-movements/" rel="next">Twittering to End Dictatorship: Ensuring the Future of Web-based Social Movements <span class="meta-nav">→</span></a></div>
+				</div><!-- #nav-above -->
+
+				<div id="post-26" class="post-26 post type-post status-publish format-standard hentry category-hadoop category-wikipedia tag-big-data tag-hadoop tag-wikipedia">
+					<h1 class="entry-title">Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop</h1>
+
+					<div class="entry-meta">
+						<span class="meta-prep meta-prep-author">Posted on</span> <a href="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian.htm" title="2:49 am" rel="bookmark"><span class="entry-date">August 16, 2011</span></a> <span class="meta-sep">by</span> <span class="author vcard"><a class="url fn n" href="http://www.mappian.com/blog/author/admin/" title="View all posts by Diederik">Diederik</a></span>					</div><!-- .entry-meta -->
+
+					<div class="entry-content">
+						<h2>Background</h2>
+<p>
+Probably the largest free dataset available on the Internet is the full XML dump of the English Wikipedia. This dataset in it’s uncompressed form is about 5.5Tb and still growing. The sheer size of this dataset poses some serious challenges to analyze the data. In theory, Hadoop would be a great tool to analyze this dataset but it turns out that this is not necessarily the case.
+</p>
+<p>
+<a href="https://github.com/lintool" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://github.com&#39;]);">Jimmy Lin</a> wrote the <a href="http://www.umiacs.umd.edu/~jimmylin/Cloud9/docs/content/wikipedia.html" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://www.umiacs.umd.edu&#39;]);">Cloud9</a> a Hadoop InputReader that can handle the stub Wikipedia dump files (the stub dump files contain all variables as in the full dump file with the exception of the text of each revision). Unfortanutely, his InputReader does not support the full XML dump files.
+</p>
+<p>
+The way that the XML dump files are organized is as follows: each dump file starts with some metadata tags and after that come the
+<page> tags that contain the revisions. Hadoop has a <a href="http://hadoop.apache.org/common/docs/current/api/org/apache/hadoop/streaming/StreamXmlRecordReader.html" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://hadoop.apache.org&#39;]);">StreamXmlRecordReader</a> that allows you to grab an XML fragment and send it as input to a mapper. This poses two problems: </page></p>
+<ul>
+<li>Some pages are so large (10′s of Gb’s) that you will run inevitable into out of memory errors.</li>
+<li>Splitting by <revision> tag leads to serious information loss as you don’t know to which page a revision belongs. </revision></li>
+</ul>
+<p>
+Hence, Hadoop’s StreamXmlRecordReader is not suitable to analyze the full Wikipedia dump files.
+</p>
+<p>
+During the last couple of weeks, the Wikimedia Foundation fellows of the <a href="http://blog.wikimedia.org/2011/06/01/summerofresearchannouncement/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://blog.wikimedia.org&#39;]);">Summer of Research</a> have been working hard on tackling this problem. In particular a big thank you to <a href="http://www.yusuke.matsubara.name/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://www.yusuke.matsubara.name&#39;]);">Yusuke Matsubara</a>, <a href="http://students.washington.edu/stw3/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://students.washington.edu&#39;]);">Shawn Walker</a>, <a href="http://www-users.cs.umn.edu/~halfak/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://www-users.cs.umn.edu&#39;]);">Aaron Halfaker</a> and <a href="http://www.cs.mcgill.ca/~fkaeli/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://www.cs.mcgill.ca&#39;]);">Fabian Kaelin</a>. We have released a customized InputFormat for the full Wikipedia dump files that supports both the compressed (bz2) and uncompressed files. The project is called WikiHadoop and the code is available on Github at <a href="https://github.com/whym/wikihadoop" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://github.com&#39;]);">https://github.com/whym/wikihadoop</a>
+</p>
+<h2>Features of WikiHadoop</h2>
+<p>Wikihadoop offers the following:</p>
+<ul>
+<li>WikiHadoop uses Hadoop’s streaming interface, so you can write your own mapper in Python, Ruby, Hadoop Pipes or Java.</li>
+<li>You can choose between sending 1 or 2 revisions to a mapper.  If you choose two revisions then it will send two consecutive revisions from a single page to a mapper. These two revisions can be used to create a diff between them (what has been added / removed). The syntax for this option is:
+<pre>-D org.wikimedia.wikihadoop.previousRevision=false (true is the default)
+</pre>
+</li>
+<li>You can specify which namespaces to include when parsing the XML files. Default behavior is to include all namespaces. You can specify this by entering a regular expression. The syntax for this option is:
+<pre>-D org.wikimedia.wikihadoop.ignorePattern='xxxx'
+</pre>
+</li>
+<li>You can parse both bz2 compressed and uncompressed files using WikiHadoop.</li>
+</ul>
+<h2>Getting Ready</h2>
+<ul>
+<li>Install and configure <a href="http://www.apache.org/dyn/closer.cgi/hadoop/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://www.apache.org&#39;]);">Hadoop 0.21</a>. The reason you need Hadoop 0.21 is that it has streaming support for bz2 files and Hadoop 0.20 does not support this. Good places to look for help on configuration can be found <a href="http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-multi-node-cluster/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://www.michael-noll.com&#39;]);">http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-multi-node-cluster/</a> and <a href="http://hadoop.apache.org/common/docs/current/cluster_setup.html" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://hadoop.apache.org&#39;]);">http://hadoop.apache.org/common/docs/current/cluster_setup.html</a>.</li>
+<li>Download <a href="http://github.com/whym/wikihadoop" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://github.com&#39;]);">WikiHadoop</a> and extract the source tree.  Confirm there is a directory called mapreduce.</li>
+<li>Download <a href="http://github.com/apache/hadoop-common" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://github.com&#39;]);">Hadoop Common</a> and extract the source tree.  Confirm there is a directory called mapreduce.</li>
+<li>Move to the top directory of the source tree of your copy of Hadoop Common.</li>
+<li>Merge the mapreduce directory of your copy of WikiHadoop into that of Hadoop Common.
+<pre>rsync -r ../wikihadoop/mapreduce/ mapreduce/
+</pre>
+</li>
+<li>Move to the directory called mapreduce/src/contrib/streaming under the source tree of Hadoop Common.
+<pre>cd mapreduce/src/contrib/streaming
+</pre>
+</li>
+<li>Run <a href="http://ant.apache.org/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://ant.apache.org&#39;]);">Ant</a> to build a jar file.
+<pre>ant jar
+</pre>
+</li>
+<li>Find the jar file at mapreduce/build/contrib/streaming/hadoop-${version}-streaming.jar under the Hadoop common source tree.</li>
+</ul>
+<p>If everything went smoothly then you should now have built the Wikihadoop InputReader and a functioning installation of Hadoop. If you have difficulties compiling WikiHadoop then please contact us, we are happy to help you out. </p>
+<h2>Tutorial</h2>
+<p>So now we are ready to start crunching some serious data!</p>
+<ul>
+<li>Download the latest full dump from <a href="http://dumps.wikimedia.org/enwiki/latest/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://dumps.wikimedia.org&#39;]);">http://dumps.wikimedia.org/enwiki/latest/</a>. Look for the files that start with <i>enwiki-latest-pages-meta-history</i> and end with ‘bz2′. You can also download the 7z files but then you will need to decompress them. Hadoop cannot stream 7z files at the moment. </li>
+<li>Copy the bz2 files to HDFS. Make sure you have enough space, you can delete the bz2 files from your regular partition after they have been copied to HDFS.
+<pre>hdfs dfs -copyFromLocal /path/to/dump/files/enwiki-<date>-pages-meta-history<file>.xml.bz2 /path/on/hdfs/
+</file></date></pre>
+<p>You can check to see if the files were successfully copy to hdfs via:</p>
+<pre>hdfs dfs -ls /path/on/hdfs/
+</pre>
+</li>
+<li>Once the files are in HDFS, you can launch Hadoop by entering the following command:
+<pre>hadoop jar hadoop-0.&lt;version&gt;-streaming.jar
+-D mapred.child.ulimit=3145728
+-D mapreduce.task.timeout=0
+-D mapreduce.input.fileinputformat.split.minsize=400000000  #Sets the file split size a smaller size will mean more seeking and SLOWER processing time
+-D mapred.output.compress=true
+-D mapred.output.compression.codec=com.hadoop.compression.lzo.LzoCodec
+-input /path/on/hdfs/enwiki-&lt;date&gt;-pages-meta-history&lt;file&gt;.xml.bz2
+-output /path/on/hdfs/out
+-mapper &lt;name of mapper&gt;
+-inputformat org.wikimedia.wikihadoop.StreamWikiDumpInputFormat
+</pre>
+</li>
+<li>You can customize your job with the following  parameters:
+</li><li>-D <namespace>. This is a regular expression that determines which namespaces to include. The default is to include all the namspaces. </namespace></li>
+<li>-D mapred.output.compression.codec=com.hadoop.compression.lzo.LzoCodec. This compresses the output of the mapper using the LZO compression algorithm. This is optional but it saves hard disk space.
+</li>
+</ul>
+<h2>Real Life Application</h2>
+<p>
+At the Wikimedia Foundation we wanted to have a more fine-grained understanding of the different types of editors that we have. To analyze this, we need to generate the diffs between two revisions to see what type of content an editor has removed and added. In the examples folder of https://github.com/whym/wikihadoop you can find our mapper function that creates diffs based on the two revisions it receives from WikiHadoop. We set the number of reducers to 0 as there is no aggregation over the diffs, we want just want to store them.
+</p>
+<p>You can launch this as follows:</p>
+<pre>hadoop jar hadoop-0.&lt;version&gt;-streaming.jar
+-D mapred.child.ulimit=3145728
+-D mapreduce.task.timeout=0
+-D mapreduce.input.fileinputformat.split.minsize=400000000
+-D mapred.reduce.tasks=0
+-D mapred.output.compress=true
+-D mapred.output.compression.codec=com.hadoop.compression.lzo.LzoCodec
+-input /path/on/hdfs/enwiki-&lt;date&gt;-pages-meta-history&lt;file&gt;.xml.bz2
+-output /path/on/hdfs/out
+-mapper /path/to/wikihadoop/examples/mapper.py
+-inputformat org.wikimedia.wikihadoop.StreamWikiDumpInputFormat
+</pre>
+<p>
+Depending  on the number of nodes in your cluster, the number of cores in each  node, and memory on each node, this job will run for quite a while. We  are running it on a three node mini-cluster with quad-core machines and  the job takes about 14 days to parse the entire English Wikpedia dump files.</p>
+<div class="twttr_button">
+				<a href="http://twitter.com/share?url=http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/&text=Using%20Hadoop%20to%20analyze%20the%20full%20Wikipedia%20dump%20files%20using%20WikiHadoop" target="_blank" title="Click here if you liked this article.">
+					<img src="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/twitt.gif" alt="Twitt">
+				</a>
+			</div><p>No related posts.</p>											</div><!-- .entry-content -->
+
+
+					<div class="entry-utility">
+						This entry was posted in <a href="http://www.mappian.com/blog/category/hadoop/" title="View all posts in hadoop" rel="category tag">hadoop</a>, <a href="http://www.mappian.com/blog/category/wikipedia/" title="View all posts in wikipedia" rel="category tag">wikipedia</a> and tagged <a href="http://www.mappian.com/blog/tag/big-data/" rel="tag">big data</a>, <a href="http://www.mappian.com/blog/tag/hadoop/" rel="tag">hadoop</a>, <a href="http://www.mappian.com/blog/tag/wikipedia/" rel="tag">wikipedia</a>. Bookmark the <a href="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian.htm" title="Permalink to Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop" rel="bookmark">permalink</a>.											</div><!-- .entry-utility -->
+				</div><!-- #post-## -->
+
+				<div id="nav-below" class="navigation">
+					<div class="nav-previous"><a href="http://www.mappian.com/blog/nosql/configuring-cassandra-multinode-on-ubuntu-10-10/" rel="prev"><span class="meta-nav">←</span> Configuring Cassandra multinode on Ubuntu 10.10</a></div>
+					<div class="nav-next"><a href="http://www.mappian.com/blog/twitter/twittering-to-end-dictatorship-ensuring-the-future-of-web-based-social-movements/" rel="next">Twittering to End Dictatorship: Ensuring the Future of Web-based Social Movements <span class="meta-nav">→</span></a></div>
+				</div><!-- #nav-below -->
+
+				
+			<div id="comments">
+
+
+			<h3 id="comments-title">15 Responses to <em>Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop</em></h3>
+
+
+			<ol class="commentlist">
+					<li class="post pingback">
+		<p>Pingback: <a href="http://www.blog.arghh.net/aj/?p=929" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://www.blog.arghh.net&#39;]);" rel="external nofollow" class="url">pinboard August 16, 2011 — arghh.net</a></p>
+	</li>
+	<li class="comment even thread-even depth-1" id="li-comment-6">
+		<div id="comment-6">
+		<div class="comment-author vcard">
+			<img alt="" src="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/c7c0cf0d84fe64fd84bbb821e01d74be" class="avatar avatar-40 photo" height="40" width="40">			<cite class="fn">Evert</cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/#comment-6">
+			August 17, 2011 at 7:13 pm</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>Nice job! Can I use the InputFormat in Hadoop 0.20.2 if I have the dump uncompressed? We’re running only this version on our cluster at the moment. Or maybe I can backport it?</p>
+</div>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/?replytocom=6#respond" onclick="return addComment.moveForm(&quot;comment-6&quot;, &quot;6&quot;, &quot;respond&quot;, &quot;26&quot;)">Reply</a>		</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-7">
+		<div id="comment-7">
+		<div class="comment-author vcard">
+			<img alt="" src="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/6e298cec0f82936920673d521345ec0e" class="avatar avatar-40 photo" height="40" width="40">			<cite class="fn"><a href="http://mappian.com/" rel="external nofollow" class="url">Diederik</a></cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/#comment-7">
+			August 18, 2011 at 2:20 am</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>Making WikiHadoop 0.20-compatible seems a bit of work. To make it backwards compatible, you have to use  classes and methods from 0.20 that will be deprecated in 0.21. So yes, it is possible but migrating to 0.21 might be more easy.</p>
+</div>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/?replytocom=7#respond" onclick="return addComment.moveForm(&quot;comment-7&quot;, &quot;7&quot;, &quot;respond&quot;, &quot;26&quot;)">Reply</a>		</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	</li>
+</ul>
+</li>
+	<li class="post pingback">
+		<p>Pingback: <a href="http://nationalcybersecurity.mobi/strata-week-cracking-a-books-genetic-code/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://nationalcybersecurity.mobi&#39;]);" rel="external nofollow" class="url">Strata Week: Cracking a book’s genetic code | National Cyber Security</a></p>
+	</li>
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-35">
+		<div id="comment-35">
+		<div class="comment-author vcard">
+			<img alt="" src="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/0eb66af2c51dc2acf8fad8e99fea7afc" class="avatar avatar-40 photo" height="40" width="40">			<cite class="fn">Kalvin</cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/#comment-35">
+			September 8, 2011 at 10:44 am</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>Very nice, thanks a lot!</p>
+<p>What about the latest stable version 0.20.203.0 ? Since version 0.21 is still considered unstable, admins from bigger cluster setups are likely avoid migrating in the moment.</p>
+</div>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/?replytocom=35#respond" onclick="return addComment.moveForm(&quot;comment-35&quot;, &quot;35&quot;, &quot;respond&quot;, &quot;26&quot;)">Reply</a>		</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	</li>
+	<li class="post pingback">
+		<p>Pingback: <a href="http://www.new-bio-technologies.info/about/bio-technology/strata-week-cracking-a-books-genetic-code" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://www.new-bio-technologies.info&#39;]);" rel="external nofollow" class="url">Strata Week: Cracking a book’s genetic code - NEW BIOTECHNOLOGIES – NEW BIOTECHNOLOGIES</a></p>
+	</li>
+	<li class="comment odd alt thread-even depth-1" id="li-comment-40">
+		<div id="comment-40">
+		<div class="comment-author vcard">
+			<img alt="" src="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/0eb66af2c51dc2acf8fad8e99fea7afc" class="avatar avatar-40 photo" height="40" width="40">			<cite class="fn">klvn</cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/#comment-40">
+			September 25, 2011 at 7:04 pm</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>Could you specify which version of Hadoop-Common 0.21 you are using? rc0?</p>
+</div>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/?replytocom=40#respond" onclick="return addComment.moveForm(&quot;comment-40&quot;, &quot;40&quot;, &quot;respond&quot;, &quot;26&quot;)">Reply</a>		</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	</li>
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-41">
+		<div id="comment-41">
+		<div class="comment-author vcard">
+			<img alt="" src="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/f40790afc5b92ba15003e07896694538" class="avatar avatar-40 photo" height="40" width="40">			<cite class="fn">ablimit</cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/#comment-41">
+			September 27, 2011 at 12:05 am</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>There is no directory named mapreduce in the hadoop commons package.<br>
+But there is a directory with name mapred.</p>
+</div>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/?replytocom=41#respond" onclick="return addComment.moveForm(&quot;comment-41&quot;, &quot;41&quot;, &quot;respond&quot;, &quot;26&quot;)">Reply</a>		</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	</li>
+	<li class="comment odd alt thread-even depth-1" id="li-comment-42">
+		<div id="comment-42">
+		<div class="comment-author vcard">
+			<img alt="" src="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/6e55778bf5024a4957ad018eb2104b1a" class="avatar avatar-40 photo" height="40" width="40">			<cite class="fn">chun</cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/#comment-42">
+			September 30, 2011 at 2:19 pm</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>I cannot find a directory mapreduce in hadoop common. Which one should I download and where is the directory?</p>
+</div>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/?replytocom=42#respond" onclick="return addComment.moveForm(&quot;comment-42&quot;, &quot;42&quot;, &quot;respond&quot;, &quot;26&quot;)">Reply</a>		</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	</li>
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-43">
+		<div id="comment-43">
+		<div class="comment-author vcard">
+			<img alt="" src="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/5f33b89ac02c24d26f359bbdf3217b26" class="avatar avatar-40 photo" height="40" width="40">			<cite class="fn"><a href="http://whym.org/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://whym.org&#39;]);" rel="external nofollow" class="url">Yusuke Matsubara</a></cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/#comment-43">
+			October 7, 2011 at 2:56 am</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>To those of you who could not compile it:<br>
+A compiled copy of WikiHadoop is now available on GitHub.  Please try using it, to avoid the pain of building it by yourself:<br>
+ <a href="https://github.com/whym/wikihadoop/downloads" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-comment&#39;,&#39;http://github.com&#39;]);" rel="nofollow">https://github.com/whym/wikihadoop/downloads</a></p>
+<p>klvn says:<br>
+&gt; September 25, 2011 at 7:04 pm<br>
+&gt; Could you specify which version of Hadoop-Common 0.21 you are using? rc0?</p>
+<p>Please use the repository version of Hadoop-common 0.21:<br>
+ <a href="https://svn.apache.org/repos/asf/hadoop/common/branches/branch-0.21/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-comment&#39;,&#39;http://svn.apache.org&#39;]);" rel="nofollow">https://svn.apache.org/repos/asf/hadoop/common/branches/branch-0.21/</a><br>
+or Hadoop-common 0.21.0 on the GitHub site:<br>
+ <a href="https://github.com/apache/hadoop-common/downloads" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-comment&#39;,&#39;http://github.com&#39;]);" rel="nofollow">https://github.com/apache/hadoop-common/downloads</a></p>
+<p>I have been using the repository version of Hadoop 0.21.  The one I recently compiled against was revision 1135003.</p>
+<p>I have seen some problems in building against other versions of Hadoop, even if they are called 0.21.x.</p>
+</div>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/?replytocom=43#respond" onclick="return addComment.moveForm(&quot;comment-43&quot;, &quot;43&quot;, &quot;respond&quot;, &quot;26&quot;)">Reply</a>		</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	</li>
+	<li class="comment odd alt thread-even depth-1" id="li-comment-62">
+		<div id="comment-62">
+		<div class="comment-author vcard">
+			<img alt="" src="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/5463a133cbe3900c2fd3348e9ad09909" class="avatar avatar-40 photo" height="40" width="40">			<cite class="fn"><a href="http://blog.muehlburger.at/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://blog.muehlburger.at&#39;]);" rel="external nofollow" class="url">Herbert Mühlburger</a></cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/#comment-62">
+			April 4, 2012 at 8:40 am</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>It would be great if there was a version of wikihadoop which compiles towards hadoop 1.0.1. Is there any working going on to get this done?</p>
+<p>Or can you give me some more background information on the splitting feature?</p>
+<p>Kind regards,<br>
+Herbert</p>
+</div>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/?replytocom=62#respond" onclick="return addComment.moveForm(&quot;comment-62&quot;, &quot;62&quot;, &quot;respond&quot;, &quot;26&quot;)">Reply</a>		</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-63">
+		<div id="comment-63">
+		<div class="comment-author vcard">
+			<img alt="" src="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/6e298cec0f82936920673d521345ec0e" class="avatar avatar-40 photo" height="40" width="40">			<cite class="fn"><a href="http://mappian.com/" rel="external nofollow" class="url">Diederik</a></cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/#comment-63">
+			April 5, 2012 at 2:08 pm</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>Hi Herbert,<br>
+Yes we are looking in updating the code and make it work with more recent Hadoop versions. Hopefully I can detail progress soon.<br>
+Best,<br>
+Diederik</p>
+</div>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/?replytocom=63#respond" onclick="return addComment.moveForm(&quot;comment-63&quot;, &quot;63&quot;, &quot;respond&quot;, &quot;26&quot;)">Reply</a>		</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	</li>
+</ul>
+</li>
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-64">
+		<div id="comment-64">
+		<div class="comment-author vcard">
+			<img alt="" src="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/5463a133cbe3900c2fd3348e9ad09909" class="avatar avatar-40 photo" height="40" width="40">			<cite class="fn"><a href="http://blog.muehlburger.at/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://blog.muehlburger.at&#39;]);" rel="external nofollow" class="url">Herbert Mühlburger</a></cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/#comment-64">
+			April 13, 2012 at 12:54 pm</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>Hi Diederik.<br>
+Can you keep me updated on the development, I wouldn’t mind to be a beta tester for the updated code. <img src="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/icon_smile.gif" alt=":-)" class="wp-smiley"> </p>
+<p>Best wishes,<br>
+Herbert</p>
+</div>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/?replytocom=64#respond" onclick="return addComment.moveForm(&quot;comment-64&quot;, &quot;64&quot;, &quot;respond&quot;, &quot;26&quot;)">Reply</a>		</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-65">
+		<div id="comment-65">
+		<div class="comment-author vcard">
+			<img alt="" src="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/6e298cec0f82936920673d521345ec0e" class="avatar avatar-40 photo" height="40" width="40">			<cite class="fn"><a href="http://mappian.com/" rel="external nofollow" class="url">Diederik</a></cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/#comment-65">
+			April 13, 2012 at 1:52 pm</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>Hi Herbert,</p>
+<p>I will connect you with our developer! Thanks so much for the offer.<br>
+Best,<br>
+Diederik</p>
+</div>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/?replytocom=65#respond" onclick="return addComment.moveForm(&quot;comment-65&quot;, &quot;65&quot;, &quot;respond&quot;, &quot;26&quot;)">Reply</a>		</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	<ul class="children">
+	<li class="comment odd alt depth-3" id="li-comment-66">
+		<div id="comment-66">
+		<div class="comment-author vcard">
+			<img alt="" src="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/5f33b89ac02c24d26f359bbdf3217b26" class="avatar avatar-40 photo" height="40" width="40">			<cite class="fn"><a href="http://whym.org/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://whym.org&#39;]);" rel="external nofollow" class="url">Yusuke Matsubara</a></cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/#comment-66">
+			April 15, 2012 at 2:27 pm</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>Hi Herbert,</p>
+<p>You might want to visit and see what wil happen at <a href="https://github.com/whym/wikihadoop/issues/8" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-comment&#39;,&#39;http://github.com&#39;]);" rel="nofollow">https://github.com/whym/wikihadoop/issues/8</a> where we are trying to port WikiHadoop to Hadoop 0.20.x.  Hopefully it will help us get it work with 1.0.0 too, since 1.0.0 was essentially a renamed 0.20-security.</p>
+<p>Best,<br>
+Yusuke</p>
+</div>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/?replytocom=66#respond" onclick="return addComment.moveForm(&quot;comment-66&quot;, &quot;66&quot;, &quot;respond&quot;, &quot;26&quot;)">Reply</a>		</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	</li>
+</ul>
+</li>
+</ul>
+</li>
+			</ol>
+
+
+
+								<div id="respond">
+				<h3 id="reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.mappian.com/blog/hadoop/using-hadoop-to-analyze-the-full-wikipedia-dump-files-using-wikihadoop/#respond" style="display:none;">Cancel reply</a></small></h3>
+									<form action="http://www.mappian.com/blog/wp-comments-post.php" method="post" id="commentform">
+																			<p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p>							<p class="comment-form-author"><label for="author">Name</label> <span class="required">*</span><input id="author" name="author" type="text" value="" size="30" aria-required="true"></p>
+<p class="comment-form-email"><label for="email">Email</label> <span class="required">*</span><input id="email" name="email" type="text" value="" size="30" aria-required="true"></p>
+<p class="comment-form-url"><label for="url">Website</label><input id="url" name="url" type="text" value="" size="30"></p>
+												<p class="comment-form-comment"><label for="comment">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>						<p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; &lt;strong&gt; </code></p>						<p class="form-submit">
+							<input name="submit" type="submit" id="submit" value="Post Comment">
+							<input type="hidden" name="comment_post_ID" value="26" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+						</p>
+						<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="bdc4ab8912"></p>					</form>
+							</div><!-- #respond -->
+			<script type="text/javascript">
+    jQuery(document).ready(function() {
+        jQuery('#commentform').submit(function() {
+            _gaq.push(
+                ['_setAccount','UA-16951273-1'],
+                ['_trackEvent','comment','submit']
+            );
+        });
+    });    
+</script>
+			
+</div><!-- #comments -->
+
+
+			</div><!-- #content -->
+		</div><!-- #container -->
+
+
+		<div id="primary" class="widget-area" role="complementary">
+			<ul class="xoxo">
+
+<li id="search-2" class="widget-container widget_search"><form role="search" method="get" id="searchform" action="http://www.mappian.com/blog/">
+	<div><label class="screen-reader-text" for="s">Search for:</label>
+	<input type="text" value="" name="s" id="s">
+	<input type="submit" id="searchsubmit" value="Search">
+	</div>
+	</form></li>		<li id="recent-posts-2" class="widget-container widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+				<li><a href="http://www.mappian.com/blog/twitter/twittering-to-end-dictatorship-ensuring-the-future-of-web-based-social-movements/" title="Twittering to End Dictatorship: Ensuring the Future of Web-based Social Movements">Twittering to End Dictatorship: Ensuring the Future of Web-based Social Movements</a></li>
+				<li><a href="./Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian_files/Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop   Mappian.htm" title="Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop">Using Hadoop to analyze the full Wikipedia dump files using WikiHadoop</a></li>
+				<li><a href="http://www.mappian.com/blog/nosql/configuring-cassandra-multinode-on-ubuntu-10-10/" title="Configuring Cassandra multinode on Ubuntu 10.10">Configuring Cassandra multinode on Ubuntu 10.10</a></li>
+				<li><a href="http://www.mappian.com/blog/igraph/add-cairo-support-to-igraph-0-5/" title="Add Cairo support to iGraph 0.5">Add Cairo support to iGraph 0.5</a></li>
+				</ul>
+		</li><li id="archives-2" class="widget-container widget_archive"><h3 class="widget-title">Archives</h3>		<ul>
+			<li><a href="http://www.mappian.com/blog/2012/02/" title="February 2012">February 2012</a></li>
+	<li><a href="http://www.mappian.com/blog/2011/08/" title="August 2011">August 2011</a></li>
+	<li><a href="http://www.mappian.com/blog/2011/02/" title="February 2011">February 2011</a></li>
+		</ul>
+</li><li id="categories-2" class="widget-container widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-9"><a href="http://www.mappian.com/blog/category/hadoop/" title="View all posts filed under hadoop">hadoop</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.mappian.com/blog/category/igraph/" title="View all posts filed under igraph">igraph</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.mappian.com/blog/category/nosql/" title="View all posts filed under nosql">nosql</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="http://www.mappian.com/blog/category/social-movements/" title="View all posts filed under social movements">social movements</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://www.mappian.com/blog/category/twitter/" title="View all posts filed under Twitter">Twitter</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.mappian.com/blog/category/wikipedia/" title="View all posts filed under wikipedia">wikipedia</a>
+</li>
+		</ul>
+</li><li id="meta-2" class="widget-container widget_meta"><h3 class="widget-title">Meta</h3>			<ul>
+			<li><a href="http://www.mappian.com/blog/wp-login.php?action=register">Register</a></li>			<li><a href="http://www.mappian.com/blog/wp-login.php">Log in</a></li>
+			<li><a href="http://www.mappian.com/blog/feed/" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://www.mappian.com/blog/comments/feed/" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>
+						</ul>
+</li>			</ul>
+		</div><!-- #primary .widget-area -->
+
+	</div><!-- #main -->
+
+	<div id="footer" role="contentinfo">
+		<div id="colophon">
+
+
+
+			<div id="site-info">
+				<a href="http://www.mappian.com/blog/" title="Mappian" rel="home">
+					Mappian				</a>
+			</div><!-- #site-info -->
+
+			<div id="site-generator">
+								<a href="http://wordpress.org/" title="Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress.</a>
+			</div><!-- #site-generator -->
+
+		</div><!-- #colophon -->
+	</div><!-- #footer -->
+
+</div><!-- #wrapper -->
+
+<div id="su-footer-links" style="text-align: center;"></div>
+
+</body></html>

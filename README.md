@@ -1,4 +1,4 @@
-Get "CDH3 Packages and Downloads" from 
+Get "CDH3 Packages and Downloads" from I used the VMware image 
 * https://ccp.cloudera.com/display/SUPPORT/Downloads
 
 Tutorials

@@ -1,0 +1,72 @@
+#questionCloseHandle{
+  display:none;
+}
+.message-alert-plain {
+  display: none;
+}
+body{
+  background-color: #FFF;
+}
+#question-history {
+  display: none;
+}
+#PopularTagsBar {
+  display: none;
+}
+#PageFeed {
+  display: none;
+}
+#PageTopbar {
+  display: none;
+}
+#PageBottomBar {
+  display: none;
+}
+#PageCenter {
+  position: static;
+  overflow: visible !important;
+}
+#PageMain {
+  position: static;
+  overflow: visible !important;
+}
+.subregionActionBar {
+  display: none;
+}
+.dropdownWrapper {
+  display: none;
+}
+#bigAnswerButton {
+  display: none;
+}
+#followupDiscussionsContentNew {
+  display: none;
+}
+#question-history {
+  display: none;
+}
+#question-history-slider-wrapper {
+  display: none;
+}
+#mainScrollPanel {
+  overflow: visible !important;
+}
+#answerButtonForUnansweredQuestions {
+  display: none;
+}
+.scrollable-wrapper {
+  position: static;
+  overflow: visible !important;
+}
+#mainScrollPanelWrapper {
+  position: static;
+  overflow: visible !important;
+}
+#PageCenter .mainPanel .scrollable-wrapper {
+  position: static;
+  overflow: visible !important;
+}
+
+* {
+  overflow: visible !important;
+}

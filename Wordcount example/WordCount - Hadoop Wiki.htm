@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0039)http://wiki.apache.org/hadoop/WordCount -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="robots" content="index,nofollow">
+
+<title>WordCount - Hadoop Wiki</title>
+<script type="text/javascript" src="./WordCount - Hadoop Wiki_files/common.js"></script>
+
+<script type="text/javascript">
+<!--
+var search_hint = "Search";
+//-->
+</script>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="./WordCount - Hadoop Wiki_files/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="./WordCount - Hadoop Wiki_files/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="./WordCount - Hadoop Wiki_files/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="projection" href="./WordCount - Hadoop Wiki_files/projection.css">
+
+<!-- css only for MS IE6/IE7 browsers -->
+<!--[if lt IE 8]>
+   <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/moin_static188/modernized/css/msie.css">
+<![endif]-->
+
+
+
+
+
+<link rel="Start" href="http://wiki.apache.org/hadoop/FrontPage">
+<link rel="Alternate" title="Wiki Markup" href="http://wiki.apache.org/hadoop/WordCount?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="http://wiki.apache.org/hadoop/WordCount?action=print">
+<link rel="Search" href="http://wiki.apache.org/hadoop/FindPage">
+<link rel="Index" href="http://wiki.apache.org/hadoop/TitleIndex">
+<link rel="Glossary" href="http://wiki.apache.org/hadoop/WordIndex">
+<link rel="Help" href="http://wiki.apache.org/hadoop/HelpOnFormatting">
+</head>
+
+<body lang="en" dir="ltr">
+
+<div id="header">
+
+<form id="searchform" method="get" action="./WordCount - Hadoop Wiki_files/WordCount - Hadoop Wiki.htm">
+<div>
+<input type="hidden" name="action" value="fullsearch">
+<input type="hidden" name="context" value="180">
+<label for="searchinput" style="display: none; ">Search:</label>
+<input id="searchinput" type="text" name="value" value="" size="20" onfocus="searchFocus(this)" onblur="searchBlur(this)" onkeyup="searchChange(this)" onchange="searchChange(this)" alt="Search" class="disabled">
+<input id="titlesearch" name="titlesearch" type="submit" value="Titles" alt="Search Titles" disabled="">
+<input id="fullsearch" name="fullsearch" type="submit" value="Text" alt="Search Full Text" disabled="">
+</div>
+</form>
+<script type="text/javascript">
+<!--// Initialize search form
+var f = document.getElementById('searchform');
+f.getElementsByTagName('label')[0].style.display = 'none';
+var e = document.getElementById('searchinput');
+searchChange(e);
+searchBlur(e);
+//-->
+</script>
+
+<div id="logo"><a href="http://wiki.apache.org/hadoop/FrontPage">Hadoop Wiki</a></div>
+<div id="username"><a href="http://wiki.apache.org/hadoop/WordCount?action=login" id="login" rel="nofollow">Login</a></div>
+<h1 id="locationline">
+
+<span id="pagelocation"><a class="backlink" href="http://wiki.apache.org/hadoop/WordCount?action=fullsearch&context=180&value=linkto%3A%22WordCount%22" rel="nofollow" title="Click to do a full-text search for this title">WordCount</a></span>
+</h1>
+
+
+<ul id="navibar">
+<li class="wikilink"><a href="http://wiki.apache.org/hadoop/FrontPage">FrontPage</a></li><li class="wikilink"><a href="http://wiki.apache.org/hadoop/RecentChanges">RecentChanges</a></li><li class="wikilink"><a href="http://wiki.apache.org/hadoop/FindPage">FindPage</a></li><li class="wikilink"><a href="http://wiki.apache.org/hadoop/HelpContents">HelpContents</a></li><li class="current"><a href="./WordCount - Hadoop Wiki_files/WordCount - Hadoop Wiki.htm">WordCount</a></li>
+</ul>
+
+<div id="pageline"><hr style="display:none;"></div>
+
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display:none;"><a href="http://wiki.apache.org/hadoop/WordCount#" class="nbcomment" onclick="toggleComments();return false;">Comments</a></li><li><a class="nbinfo" href="http://wiki.apache.org/hadoop/WordCount?action=info" rel="nofollow">Info</a></li><li>
+<form class="actionsmenu" method="GET" action="./WordCount - Hadoop Wiki_files/WordCount - Hadoop Wiki.htm">
+<div>
+    
+    <select name="action" onchange="if ((this.selectedIndex != 0) &amp;&amp;
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option value="show">More Actions:</option><option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="RenamePage" disabled="" class="disabled">Rename Page</option>
+<option value="CopyPage">Copy Page</option>
+<option value="DeletePage" disabled="" class="disabled">Delete Page</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="MyPages">My Pages</option>
+<option value="show" disabled="" class="disabled">Subscribe User</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="show" disabled="" class="disabled">Remove Spam</option>
+<option value="show" disabled="" class="disabled">Revert to this revision</option>
+<option value="show" disabled="" class="disabled">Package Pages</option>
+<option value="SyncPages">Sync Pages</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+    </select>
+    
+    
+</div>
+<script type="text/javascript">
+<!--// Init menu
+actionsMenuInit('More Actions:');
+//-->
+</script>
+</form>
+</li></ul>
+
+</div>
+
+<div id="page" lang="en" dir="ltr">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><p class="line867">
+</p><h1 id="WordCount_Example">WordCount Example</h1>
+<span class="anchor" id="line-2"></span><span class="anchor" id="line-3"></span><p class="line867"><strong>WordCount</strong> example reads text files and counts how often words occur.  The input is text files and the output is text files, each line of which contains a word and the count of how often it occured, separated by a tab. <span class="anchor" id="line-4"></span><span class="anchor" id="line-5"></span></p><p class="line874">Each mapper takes a line as input and breaks it into words. It then emits a key/value pair of the word and 1. Each reducer sums the counts for each word and emits a single key/value with the word and sum. <span class="anchor" id="line-6"></span><span class="anchor" id="line-7"></span></p><p class="line874">As an optimization, the reducer is also used as a combiner on the map outputs. This reduces the amount of data sent across the network by combining each word into a single record. <span class="anchor" id="line-8"></span><span class="anchor" id="line-9"></span></p><p class="line862">To run the example, the command syntax is<br>
+ <span class="anchor" id="line-10"></span>bin/hadoop jar hadoop-*-examples.jar wordcount [-m &lt;#maps&gt;] [-r &lt;#reducers&gt;] &lt;in-dir&gt; &lt;out-dir&gt; <span class="anchor" id="line-11"></span><span class="anchor" id="line-12"></span></p><p class="line862">All of the files in the input directory (called in-dir in the command line above) are read and the counts of words in the input are written to the output directory (called out-dir above).  It is assumed that both inputs and outputs are stored in HDFS (see <a href="http://wiki.apache.org/hadoop/ImportantConcepts">ImportantConcepts</a>).  If your input is not already in HDFS, but is rather in a local file system somewhere, you need to copy the data into HDFS using a command like this:<br>
+ <span class="anchor" id="line-13"></span><span class="anchor" id="line-14"></span></p><p class="line862">bin/hadoop dfs -mkdir &lt;hdfs-dir&gt;<br>
+ <span class="anchor" id="line-15"></span>bin/hadoop dfs -copyFromLocal &lt;local-dir&gt; &lt;hdfs-dir&gt; <span class="anchor" id="line-16"></span><span class="anchor" id="line-17"></span></p><p class="line862">As of version 0.17.2.1, you only need to run a command like this:<br>
+ <span class="anchor" id="line-18"></span>bin/hadoop dfs -copyFromLocal &lt;local-dir&gt; &lt;hdfs-dir&gt; <span class="anchor" id="line-19"></span><span class="anchor" id="line-20"></span><span class="anchor" id="line-21"></span></p><p class="line862">Word count supports generic options : see <a href="http://wiki.apache.org/hadoop/DevelopmentCommandLineOptions">DevelopmentCommandLineOptions</a> <span class="anchor" id="line-22"></span><span class="anchor" id="line-23"></span></p><p class="line874">Below is the standard wordcount example implemented in Java: <span class="anchor" id="line-24"></span><span class="anchor" id="line-25"></span><span class="anchor" id="line-26"></span></p><p class="line867"><span class="anchor" id="line-27"></span><span class="anchor" id="line-28"></span><span class="anchor" id="line-29"></span><span class="anchor" id="line-30"></span><span class="anchor" id="line-31"></span><span class="anchor" id="line-32"></span><span class="anchor" id="line-33"></span><span class="anchor" id="line-34"></span><span class="anchor" id="line-35"></span><span class="anchor" id="line-36"></span><span class="anchor" id="line-37"></span><span class="anchor" id="line-38"></span><span class="anchor" id="line-39"></span><span class="anchor" id="line-40"></span><span class="anchor" id="line-41"></span><span class="anchor" id="line-42"></span><span class="anchor" id="line-43"></span><span class="anchor" id="line-44"></span><span class="anchor" id="line-45"></span><span class="anchor" id="line-46"></span><span class="anchor" id="line-47"></span><span class="anchor" id="line-48"></span><span class="anchor" id="line-49"></span><span class="anchor" id="line-50"></span><span class="anchor" id="line-51"></span><span class="anchor" id="line-52"></span><span class="anchor" id="line-53"></span><span class="anchor" id="line-54"></span><span class="anchor" id="line-55"></span><span class="anchor" id="line-56"></span><span class="anchor" id="line-57"></span><span class="anchor" id="line-58"></span><span class="anchor" id="line-59"></span><span class="anchor" id="line-60"></span><span class="anchor" id="line-61"></span><span class="anchor" id="line-62"></span><span class="anchor" id="line-63"></span><span class="anchor" id="line-64"></span><span class="anchor" id="line-65"></span><span class="anchor" id="line-66"></span><span class="anchor" id="line-67"></span><span class="anchor" id="line-68"></span><span class="anchor" id="line-69"></span><span class="anchor" id="line-70"></span><span class="anchor" id="line-71"></span><span class="anchor" id="line-72"></span><span class="anchor" id="line-73"></span><span class="anchor" id="line-74"></span><span class="anchor" id="line-75"></span><span class="anchor" id="line-76"></span><span class="anchor" id="line-77"></span><span class="anchor" id="line-78"></span><span class="anchor" id="line-79"></span><span class="anchor" id="line-80"></span><span class="anchor" id="line-81"></span><span class="anchor" id="line-82"></span><span class="anchor" id="line-83"></span><span class="anchor" id="line-84"></span><span class="anchor" id="line-85"></span><span class="anchor" id="line-86"></span><span class="anchor" id="line-87"></span><span class="anchor" id="line-88"></span><span class="anchor" id="line-89"></span><span class="anchor" id="line-90"></span></p><div class="codearea" dir="ltr" lang="en">
+<script type="text/javascript">
+function isnumbered(obj) {
+  return obj.childNodes.length && obj.firstChild.childNodes.length && obj.firstChild.firstChild.className == 'LineNumber';
+}
+function nformat(num,chrs,add) {
+  var nlen = Math.max(0,chrs-(''+num).length), res = '';
+  while (nlen>0) { res += ' '; nlen-- }
+  return res+num+add;
+}
+function addnumber(did, nstart, nstep) {
+  var c = document.getElementById(did), l = c.firstChild, n = 1;
+  if (!isnumbered(c))
+    if (typeof nstart == 'undefined') nstart = 1;
+    if (typeof nstep  == 'undefined') nstep = 1;
+    n = nstart;
+    while (l != null) {
+      if (l.tagName == 'SPAN') {
+        var s = document.createElement('SPAN');
+        s.className = 'LineNumber'
+        s.appendChild(document.createTextNode(nformat(n,4,' ')));
+        n += nstep;
+        if (l.childNodes.length)
+          l.insertBefore(s, l.firstChild)
+        else
+          l.appendChild(s)
+      }
+      l = l.nextSibling;
+    }
+  return false;
+}
+function remnumber(did) {
+  var c = document.getElementById(did), l = c.firstChild;
+  if (isnumbered(c))
+    while (l != null) {
+      if (l.tagName == 'SPAN' && l.firstChild.className == 'LineNumber') l.removeChild(l.firstChild);
+      l = l.nextSibling;
+    }
+  return false;
+}
+function togglenumber(did, nstart, nstep) {
+  var c = document.getElementById(did);
+  if (isnumbered(c)) {
+    remnumber(did);
+  } else {
+    addnumber(did,nstart,nstep);
+  }
+  return false;
+}
+</script>
+
+<script type="text/javascript">
+document.write('<a href="#" onclick="return togglenumber(\'CA-be0269e73ac25d11242ef29b7d00d52b58d74ed8\', 1, 1);" \
+                class="codenumbers">Toggle line numbers<\/a>');
+</script><a href="http://wiki.apache.org/hadoop/WordCount#" onclick="return togglenumber(&#39;CA-be0269e73ac25d11242ef29b7d00d52b58d74ed8&#39;, 1, 1);" class="codenumbers">Toggle line numbers</a>
+<pre dir="ltr" id="CA-be0269e73ac25d11242ef29b7d00d52b58d74ed8" lang="en"><span class="line"><span class="LineNumber">   1 </span><span class="ResWord">package</span> <span class="ID">org</span><span class="SPChar">.</span><span class="ID">myorg</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">   2 </span>        </span>
+<span class="line"><span class="LineNumber">   3 </span><span class="ResWord">import</span> <span class="ID">java</span><span class="SPChar">.</span><span class="ID">io</span><span class="SPChar">.</span><span class="ID">IOException</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">   4 </span><span class="ResWord">import</span> <span class="ID">java</span><span class="SPChar">.</span><span class="ID">util</span><span class="SPChar">.</span><span class="SPChar">*</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">   5 </span>        </span>
+<span class="line"><span class="LineNumber">   6 </span><span class="ResWord">import</span> <span class="ID">org</span><span class="SPChar">.</span><span class="ID">apache</span><span class="SPChar">.</span><span class="ID">hadoop</span><span class="SPChar">.</span><span class="ID">fs</span><span class="SPChar">.</span><span class="ID">Path</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">   7 </span><span class="ResWord">import</span> <span class="ID">org</span><span class="SPChar">.</span><span class="ID">apache</span><span class="SPChar">.</span><span class="ID">hadoop</span><span class="SPChar">.</span><span class="ID">conf</span><span class="SPChar">.</span><span class="SPChar">*</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">   8 </span><span class="ResWord">import</span> <span class="ID">org</span><span class="SPChar">.</span><span class="ID">apache</span><span class="SPChar">.</span><span class="ID">hadoop</span><span class="SPChar">.</span><span class="ID">io</span><span class="SPChar">.</span><span class="SPChar">*</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">   9 </span><span class="ResWord">import</span> <span class="ID">org</span><span class="SPChar">.</span><span class="ID">apache</span><span class="SPChar">.</span><span class="ID">hadoop</span><span class="SPChar">.</span><span class="ID">mapreduce</span><span class="SPChar">.</span><span class="SPChar">*</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  10 </span><span class="ResWord">import</span> <span class="ID">org</span><span class="SPChar">.</span><span class="ID">apache</span><span class="SPChar">.</span><span class="ID">hadoop</span><span class="SPChar">.</span><span class="ID">mapreduce</span><span class="SPChar">.</span><span class="ID">lib</span><span class="SPChar">.</span><span class="ID">input</span><span class="SPChar">.</span><span class="ID">FileInputFormat</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  11 </span><span class="ResWord">import</span> <span class="ID">org</span><span class="SPChar">.</span><span class="ID">apache</span><span class="SPChar">.</span><span class="ID">hadoop</span><span class="SPChar">.</span><span class="ID">mapreduce</span><span class="SPChar">.</span><span class="ID">lib</span><span class="SPChar">.</span><span class="ID">input</span><span class="SPChar">.</span><span class="ID">TextInputFormat</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  12 </span><span class="ResWord">import</span> <span class="ID">org</span><span class="SPChar">.</span><span class="ID">apache</span><span class="SPChar">.</span><span class="ID">hadoop</span><span class="SPChar">.</span><span class="ID">mapreduce</span><span class="SPChar">.</span><span class="ID">lib</span><span class="SPChar">.</span><span class="ID">output</span><span class="SPChar">.</span><span class="ID">FileOutputFormat</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  13 </span><span class="ResWord">import</span> <span class="ID">org</span><span class="SPChar">.</span><span class="ID">apache</span><span class="SPChar">.</span><span class="ID">hadoop</span><span class="SPChar">.</span><span class="ID">mapreduce</span><span class="SPChar">.</span><span class="ID">lib</span><span class="SPChar">.</span><span class="ID">output</span><span class="SPChar">.</span><span class="ID">TextOutputFormat</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  14 </span>        </span>
+<span class="line"><span class="LineNumber">  15 </span><span class="ResWord">public</span> <span class="ResWord">class</span> <span class="ID">WordCount</span> <span class="SPChar">{</span></span>
+<span class="line"><span class="LineNumber">  16 </span>        </span>
+<span class="line"><span class="LineNumber">  17 </span> <span class="ResWord">public</span> <span class="ResWord">static</span> <span class="ResWord">class</span> <span class="ID">Map</span> <span class="ResWord">extends</span> <span class="ID">Mapper</span><span class="SPChar">&lt;</span><span class="ID">LongWritable</span><span class="SPChar">,</span> <span class="ID">Text</span><span class="SPChar">,</span> <span class="ID">Text</span><span class="SPChar">,</span> <span class="ID">IntWritable</span><span class="SPChar">&gt;</span> <span class="SPChar">{</span></span>
+<span class="line"><span class="LineNumber">  18 </span>    <span class="ResWord">private</span> <span class="ResWord">final</span> <span class="ResWord">static</span> <span class="ID">IntWritable</span> <span class="ID">one</span> <span class="SPChar">=</span> <span class="ResWord">new</span> <span class="ID">IntWritable</span><span class="SPChar">(</span><span class="Number">1</span><span class="SPChar">)</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  19 </span>    <span class="ResWord">private</span> <span class="ID">Text</span> <span class="ID">word</span> <span class="SPChar">=</span> <span class="ResWord">new</span> <span class="ID">Text</span><span class="SPChar">(</span><span class="SPChar">)</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  20 </span>        </span>
+<span class="line"><span class="LineNumber">  21 </span>    <span class="ResWord">public</span> <span class="ResWord">void</span> <span class="ID">map</span><span class="SPChar">(</span><span class="ID">LongWritable</span> <span class="ID">key</span><span class="SPChar">,</span> <span class="ID">Text</span> <span class="ID">value</span><span class="SPChar">,</span> <span class="ID">Context</span> <span class="ID">context</span><span class="SPChar">)</span> <span class="ResWord">throws</span> <span class="ID">IOException</span><span class="SPChar">,</span> <span class="ID">InterruptedException</span> <span class="SPChar">{</span></span>
+<span class="line"><span class="LineNumber">  22 </span>        <span class="ID">String</span> <span class="ID">line</span> <span class="SPChar">=</span> <span class="ID">value</span><span class="SPChar">.</span><span class="ID">toString</span><span class="SPChar">(</span><span class="SPChar">)</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  23 </span>        <span class="ID">StringTokenizer</span> <span class="ID">tokenizer</span> <span class="SPChar">=</span> <span class="ResWord">new</span> <span class="ID">StringTokenizer</span><span class="SPChar">(</span><span class="ID">line</span><span class="SPChar">)</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  24 </span>        <span class="ResWord">while</span> <span class="SPChar">(</span><span class="ID">tokenizer</span><span class="SPChar">.</span><span class="ID">hasMoreTokens</span><span class="SPChar">(</span><span class="SPChar">)</span><span class="SPChar">)</span> <span class="SPChar">{</span></span>
+<span class="line"><span class="LineNumber">  25 </span>            <span class="ID">word</span><span class="SPChar">.</span><span class="ID">set</span><span class="SPChar">(</span><span class="ID">tokenizer</span><span class="SPChar">.</span><span class="ID">nextToken</span><span class="SPChar">(</span><span class="SPChar">)</span><span class="SPChar">)</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  26 </span>            <span class="ID">context</span><span class="SPChar">.</span><span class="ID">write</span><span class="SPChar">(</span><span class="ID">word</span><span class="SPChar">,</span> <span class="ID">one</span><span class="SPChar">)</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  27 </span>        <span class="SPChar">}</span></span>
+<span class="line"><span class="LineNumber">  28 </span>    <span class="SPChar">}</span></span>
+<span class="line"><span class="LineNumber">  29 </span> <span class="SPChar">}</span> </span>
+<span class="line"><span class="LineNumber">  30 </span>        </span>
+<span class="line"><span class="LineNumber">  31 </span> <span class="ResWord">public</span> <span class="ResWord">static</span> <span class="ResWord">class</span> <span class="ID">Reduce</span> <span class="ResWord">extends</span> <span class="ID">Reducer</span><span class="SPChar">&lt;</span><span class="ID">Text</span><span class="SPChar">,</span> <span class="ID">IntWritable</span><span class="SPChar">,</span> <span class="ID">Text</span><span class="SPChar">,</span> <span class="ID">IntWritable</span><span class="SPChar">&gt;</span> <span class="SPChar">{</span></span>
+<span class="line"><span class="LineNumber">  32 </span></span>
+<span class="line"><span class="LineNumber">  33 </span>    <span class="ResWord">public</span> <span class="ResWord">void</span> <span class="ID">reduce</span><span class="SPChar">(</span><span class="ID">Text</span> <span class="ID">key</span><span class="SPChar">,</span> <span class="ID">Iterable</span><span class="SPChar">&lt;</span><span class="ID">IntWritable</span><span class="SPChar">&gt;</span> <span class="ID">values</span><span class="SPChar">,</span> <span class="ID">Context</span> <span class="ID">context</span><span class="SPChar">)</span> </span>
+<span class="line"><span class="LineNumber">  34 </span>      <span class="ResWord">throws</span> <span class="ID">IOException</span><span class="SPChar">,</span> <span class="ID">InterruptedException</span> <span class="SPChar">{</span></span>
+<span class="line"><span class="LineNumber">  35 </span>        <span class="ResWord">int</span> <span class="ID">sum</span> <span class="SPChar">=</span> <span class="Number">0</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  36 </span>        <span class="ResWord">for</span> <span class="SPChar">(</span><span class="ID">IntWritable</span> <span class="ID">val</span> <span class="SPChar">:</span> <span class="ID">values</span><span class="SPChar">)</span> <span class="SPChar">{</span></span>
+<span class="line"><span class="LineNumber">  37 </span>            <span class="ID">sum</span> <span class="SPChar">+</span><span class="SPChar">=</span> <span class="ID">val</span><span class="SPChar">.</span><span class="ID">get</span><span class="SPChar">(</span><span class="SPChar">)</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  38 </span>        <span class="SPChar">}</span></span>
+<span class="line"><span class="LineNumber">  39 </span>        <span class="ID">context</span><span class="SPChar">.</span><span class="ID">write</span><span class="SPChar">(</span><span class="ID">key</span><span class="SPChar">,</span> <span class="ResWord">new</span> <span class="ID">IntWritable</span><span class="SPChar">(</span><span class="ID">sum</span><span class="SPChar">)</span><span class="SPChar">)</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  40 </span>    <span class="SPChar">}</span></span>
+<span class="line"><span class="LineNumber">  41 </span> <span class="SPChar">}</span></span>
+<span class="line"><span class="LineNumber">  42 </span>        </span>
+<span class="line"><span class="LineNumber">  43 </span> <span class="ResWord">public</span> <span class="ResWord">static</span> <span class="ResWord">void</span> <span class="ID">main</span><span class="SPChar">(</span><span class="ID">String</span><span class="SPChar">[</span><span class="SPChar">]</span> <span class="ID">args</span><span class="SPChar">)</span> <span class="ResWord">throws</span> <span class="ID">Exception</span> <span class="SPChar">{</span></span>
+<span class="line"><span class="LineNumber">  44 </span>    <span class="ID">Configuration</span> <span class="ID">conf</span> <span class="SPChar">=</span> <span class="ResWord">new</span> <span class="ID">Configuration</span><span class="SPChar">(</span><span class="SPChar">)</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  45 </span>        </span>
+<span class="line"><span class="LineNumber">  46 </span>        <span class="ID">Job</span> <span class="ID">job</span> <span class="SPChar">=</span> <span class="ResWord">new</span> <span class="ID">Job</span><span class="SPChar">(</span><span class="ID">conf</span><span class="SPChar">,</span> <span class="String">"wordcount"</span><span class="SPChar">)</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  47 </span>    </span>
+<span class="line"><span class="LineNumber">  48 </span>    <span class="ID">job</span><span class="SPChar">.</span><span class="ID">setOutputKeyClass</span><span class="SPChar">(</span><span class="ID">Text</span><span class="SPChar">.</span><span class="ResWord">class</span><span class="SPChar">)</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  49 </span>    <span class="ID">job</span><span class="SPChar">.</span><span class="ID">setOutputValueClass</span><span class="SPChar">(</span><span class="ID">IntWritable</span><span class="SPChar">.</span><span class="ResWord">class</span><span class="SPChar">)</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  50 </span>        </span>
+<span class="line"><span class="LineNumber">  51 </span>    <span class="ID">job</span><span class="SPChar">.</span><span class="ID">setMapperClass</span><span class="SPChar">(</span><span class="ID">Map</span><span class="SPChar">.</span><span class="ResWord">class</span><span class="SPChar">)</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  52 </span>    <span class="ID">job</span><span class="SPChar">.</span><span class="ID">setReducerClass</span><span class="SPChar">(</span><span class="ID">Reduce</span><span class="SPChar">.</span><span class="ResWord">class</span><span class="SPChar">)</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  53 </span>        </span>
+<span class="line"><span class="LineNumber">  54 </span>    <span class="ID">job</span><span class="SPChar">.</span><span class="ID">setInputFormatClass</span><span class="SPChar">(</span><span class="ID">TextInputFormat</span><span class="SPChar">.</span><span class="ResWord">class</span><span class="SPChar">)</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  55 </span>    <span class="ID">job</span><span class="SPChar">.</span><span class="ID">setOutputFormatClass</span><span class="SPChar">(</span><span class="ID">TextOutputFormat</span><span class="SPChar">.</span><span class="ResWord">class</span><span class="SPChar">)</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  56 </span>        </span>
+<span class="line"><span class="LineNumber">  57 </span>    <span class="ID">FileInputFormat</span><span class="SPChar">.</span><span class="ID">addInputPath</span><span class="SPChar">(</span><span class="ID">job</span><span class="SPChar">,</span> <span class="ResWord">new</span> <span class="ID">Path</span><span class="SPChar">(</span><span class="ID">args</span><span class="SPChar">[</span><span class="Number">0</span><span class="SPChar">]</span><span class="SPChar">)</span><span class="SPChar">)</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  58 </span>    <span class="ID">FileOutputFormat</span><span class="SPChar">.</span><span class="ID">setOutputPath</span><span class="SPChar">(</span><span class="ID">job</span><span class="SPChar">,</span> <span class="ResWord">new</span> <span class="ID">Path</span><span class="SPChar">(</span><span class="ID">args</span><span class="SPChar">[</span><span class="Number">1</span><span class="SPChar">]</span><span class="SPChar">)</span><span class="SPChar">)</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  59 </span>        </span>
+<span class="line"><span class="LineNumber">  60 </span>    <span class="ID">job</span><span class="SPChar">.</span><span class="ID">waitForCompletion</span><span class="SPChar">(</span><span class="ConsWord">true</span><span class="SPChar">)</span><span class="SPChar">;</span></span>
+<span class="line"><span class="LineNumber">  61 </span> <span class="SPChar">}</span></span>
+<span class="line"><span class="LineNumber">  62 </span>        </span>
+<span class="line"><span class="LineNumber">  63 </span><span class="SPChar">}</span></span>
+</pre></div><span class="anchor" id="line-91"></span><span class="anchor" id="bottom"></span></div><p id="pageinfo" class="info" lang="en" dir="ltr">WordCount  (last edited 2011-06-10 02:56:55 by <span title="Garrett Wu @ 216-75-233-106.static.wiline.com[216.75.233.106]"><a class="nonexistent" href="http://wiki.apache.org/hadoop/Garrett%20Wu" title="Garrett Wu @ 216-75-233-106.static.wiline.com[216.75.233.106]">Garrett Wu</a></span>)</p>
+
+<div id="pagebottom"></div>
+</div>
+
+
+<div id="footer">
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display:none;"><a href="http://wiki.apache.org/hadoop/WordCount#" class="nbcomment" onclick="toggleComments();return false;">Comments</a></li><li><a class="nbinfo" href="http://wiki.apache.org/hadoop/WordCount?action=info" rel="nofollow">Info</a></li><li>
+<form class="actionsmenu" method="GET" action="./WordCount - Hadoop Wiki_files/WordCount - Hadoop Wiki.htm">
+<div>
+    
+    <select name="action" onchange="if ((this.selectedIndex != 0) &amp;&amp;
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option value="show">More Actions:</option><option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="RenamePage" disabled="" class="disabled">Rename Page</option>
+<option value="CopyPage">Copy Page</option>
+<option value="DeletePage" disabled="" class="disabled">Delete Page</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="MyPages">My Pages</option>
+<option value="show" disabled="" class="disabled">Subscribe User</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="show" disabled="" class="disabled">Remove Spam</option>
+<option value="show" disabled="" class="disabled">Revert to this revision</option>
+<option value="show" disabled="" class="disabled">Package Pages</option>
+<option value="SyncPages">Sync Pages</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+    </select>
+    
+    
+</div>
+<script type="text/javascript">
+<!--// Init menu
+actionsMenuInit('More Actions:');
+//-->
+</script>
+</form>
+</li></ul>
+
+<ul id="credits">
+<li><a href="http://moinmo.in/" title="This site uses the MoinMoin Wiki software.">MoinMoin Powered</a></li><li><a href="http://moinmo.in/Python" title="MoinMoin is written in Python.">Python Powered</a></li><li><a href="http://moinmo.in/GPL" title="MoinMoin is GPL licensed.">GPL licensed</a></li><li><a href="http://validator.w3.org/check?uri=referer" title="Click here to validate this page.">Valid HTML 4.01</a></li>
+</ul>
+
+
+</div>
+
+
+
+</body></html>

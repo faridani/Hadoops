@@ -1,0 +1,19 @@
+
+<!-- saved from url=(0038)http://piazza.com/upload/upload_attach -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript">
+  function startUpload() {
+    document.getElementById("btn").value = "Uploading, please wait...";
+    document.getElementById("btn").disabled = true;
+    return true;
+  }
+</script>
+
+</head><body><form action="upload_attach.htm" enctype="multipart/form-data" id="fff" method="post" onsubmit="startUpload()">
+<input id="uid" name="uid" type="hidden" value="">
+<input id="nid" name="nid" type="hidden" value="">
+<input id="cid" name="cid" type="hidden" value="">
+<input id="user_attachment" name="user[attachment]" onchange="document.getElementById(&#39;btn&#39;).disabled = false;" size="30" type="file">
+<input class="button" disabled="disabled" id="btn" name="commit" type="submit" value="Upload">
+<span id="msg"></span>(maximum 20 Mb)
+</form>
+</body></html>

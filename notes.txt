@@ -1,0 +1,7 @@
+head -10 /scratch/cs294-1/wikipedia.xml
+
+head -5000 /scratch/cs294-1/wikipedia.xml > sample.xml
+
+hadoop jar test.jar  /user/cs294-af/gutenberg /user/cs294-af/output
+
+

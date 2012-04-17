@@ -1,0 +1,289 @@
+	             
+	   Department of Electrical Engineering & Computer Sciences
+	                 Instructional Support Group
+
+
+/share/b/pub/mapreduce.help
+/share/b/pub/hadoop.help
+/share/b/pub/mpi.help
+/share/b/pub/icluster.help
+
+								Feb 23, 2012
+
+CONTENTS
+	Icluster: Computing Cluster for EECS Students
+	Icluster: How to Logon
+	Icluster: How to Run MapReduce via ssh shell
+	Icluster: How to Run MapReduce within UCB Scheme 
+	Icluster: How to Run Parallel Programs using Torque/Maui
+	ICluster: How to View the WEB Logs
+	Icluster: Reserving Time for a Class
+	Icluster: Setup info for ISG Sysadmins
+
+	MapReduce and MPI
+	Computing Clusters for EECS Researchers
+	Google/IBM "Cloud Cluster"
+	Amazon AWS EC2 Elastic Compute Cloud
+
+
+ICluster: Computing Cluster for EECS Students
+---------------------------------------------
+  For students to do coursework in parallel computing, EECS Instruction 
+  supports an on-site cluster called "Icluster" that is available to all 
+  students who have Instructional computer accounts:
+
+  "ICluster" (aka "Google/Intel Cluster"):
+
+	This is a cluster of 26 DELL computers in a water-cooled rack
+	in an EECS server room, managed by EECS technical support staff 
+	(inst@eecs.berkeley.edu).  It consists of 26 Intel/DELL 1950s 
+	(2 quad-core 2.33GHz Xeon, 8-GB RAM) running Debian Linux.  The 
+	computers were purchased from DELL in August 2007 with funds that
+	were donated to EECS by GOOGLE and INTEL.  We deployed it as an 
+	8-node cluster that was used by CS61A in Fall 2007 and expanded 
+	it to 26-nodes in January 2008.  Any EECS class could use it.  
+
+	MapReduce/HaDoop programming tools are available.
+	MPI programming tools are not currently installed.
+
+
+Icluster: How to Logon
+----------------------
+  Students with EECS Instructional computer accounts can use MapReduce on 
+  the multi-node Instructional cluster by logging into the job submission
+  server
+  
+	icluster1.eecs.berkeley.edu
+   
+  using 'ssh' or 'putty' (see http://inst.eecs.berkeley.edu/connecting.html).
+
+  Use your Instructional UNIX login/password, as on cory.eecs.berkeley.edu.  
+  For information about getting an EECS Instructional computer account, see 
+  http://inst.eecs.berkeley.edu/new-users.html.
+
+
+Icluster: How to Run MapReduce via ssh shell
+--------------------------------------------
+  Here is a simple test of the map-reduce implementation on 
+  icluster1.eecs.berkeley.edu:
+
+	#!/bin/bash -x
+	export HADOOP_HOME=/home/aa/projects/hadoop
+	export HADOOP_INSTALL=$HADOOP_HOME/hadoop
+	export HADOOP_EXAMPLES=$HADOOP_INSTALL/hadoop-examples*.jar
+	export HADOOP_CONF_DIR=$HADOOP_HOME/conf
+	export PATH=$HADOOP_INSTALL/bin:$PATH
+
+	hadoop fs -rmr gutenberg gutenberg-output
+	hadoop dfs -copyFromLocal $HADOOP_HOME/examples/gutenberg gutenberg
+	hadoop jar $HADOOP_EXAMPLES wordcount gutenberg gutenberg-output
+	hadoop dfs -ls gutenberg-output
+	hadoop dfs -cat gutenberg-output/part-r-00000
+
+	hadoop dfsadmin -report
+
+
+Icluster: How to Run MapReduce within UCB Scheme 
+------------------------------------------------
+
+  CS61A teaching staff have developed a module for UCB Scheme that runs 
+  MapReduce functions within UCB Scheme, a Scheme interpreter that is 
+  written in STk and has home-grown extensions for our CS Lower Division 
+  classes.   It requires a customized version of Hadoop that is owned by
+  CS61A and that runs on the Icluster.
+  
+  For instructions about how the CS61A instructor can start Hadoop for the
+  UCB Scheme/MapReduce functions and how students can use it, please see 
+  http://inst.eecs.berkeley.edu/cgi-bin/pub.cgi?file=scheme.help.
+
+  For the authors' technical report, please see "Infusing Parallelism into 
+  Introductory Computer Science Curriculum using MapReduce" 
+  (http://www.eecs.berkeley.edu/Pubs/TechRpts/2008/EECS-2008-34.html).
+
+
+Icluster: How to Run Parallel Programs using Torque/Maui
+--------------------------------------------------------
+
+  The ICluster runs the Torque Resource Manager and the Maui Cluster Scheduler:
+
+    http://www.clusterresources.com/pages/products/torque-resource-manager.php
+    http://www.clusterresources.com/pages/products/maui-cluster-scheduler.php
+
+  These are used to schedule programs that can run on multiple nodes of the 
+  cluster.  Please see http://www.millennium.berkeley.edu/docs/torque.html 
+  for commands and examples [thanks to Mike Howard].
+
+
+ICluster: How to View the WEB Logs
+----------------------------------
+
+  Here is a WEB site that displays statistics for the Icluster:
+
+  	http://icluster1.eecs.berkeley.edu:50030/jobtracker.jsp
+
+
+Icluster: Reserving Time for a Class
+------------------------------------
+  
+  These classes wish to reserve the Icluster for their exclusive use:
+
+	CS61A - week 13 of the semester
+	CS61C - week 15 of the semester
+
+  Instuctors should please contact inst@eecs.berekeley.edu if they wish
+  to assign projects involving parallelism on the Icluster.
+
+  Programs that do not use parallelism should not be run on the Icluster.
+  Please refer to http://inst.eecs.berkeley.edu/~inst/iesglabs.html for 
+  information about our other computers.
+
+
+Icluster: Setup info for ISG Sysadmins
+--------------------------------------
+
+  There are 2 Hadoop versions that run on the Icluster:
+
+  1) The current version is in ~hadoop/hadoop.  
+     This is what most people should use.  
+
+  2) The old version for UCB Scheme is in ~cs61a/projects/hadoop.
+     This is for classes that want to use MapReduce with STk, which
+     was developed by students for CS61A.  CS61AS may still use the 
+     old version for UCB Scheme.  Starting in Fall 2011, CS61A has 
+     converted to Python3 and uses the current version (#1, above).  
+
+  Here are the setup commands for a new installation of the HDFS file 
+  system for the current version (#1, above):
+
+  Login as 'hadoop' on Icluster1.
+    
+  In ~hadoop/conf, edit these files to include
+
+  core-site.xml:    
+			<name>hadoop.tmp.dir</name>
+			<value>/scratch/hadoop/${user.name}</value>
+
+			<name>fs.default.name</name>
+			<value>hdfs://icluster1:9010</value>
+
+  mapred-site.xml:  	
+			<name>mapred.job.tracker</name>
+			<value>icluster1:9011</value>
+
+			<name>mapred.system.dir</name>
+			<value>/scratch/hadoop/mapred/system</value>
+
+  hadoop-env.sh:	export JAVA_HOME=/usr/lib/jvm/java-6-sun
+
+  slaves:		list all of the nodes in the cluster 
+
+  Recreate the UNIX and HDFS directory structures:
+
+  % export JAVA_HOME=/usr/lib/jvm/java-6-sun-1.6.0.12		# for example
+  % cd ~hadoop/hadoop/bin
+  % eval ./setup.sh -s			# set env variables for bash
+  % ./stop-all.sh			# stop hadoop if running
+
+  % cd /scratch; chmod 755 /scratch	# do this on all cluster nodes
+  % mkdir /scratch/hadoop		# do this on all cluster nodes
+  % chmod 777 /scratch/hadoop		# do this on all cluster nodes
+
+  % ./hadoop fs -mkdir /user
+  % ./hadoop fs -chown hadoop /user
+  % ./hadoop fs -chmod 777 /user
+  % ./hadoop fs -chmod 777 /scratch/hadoop
+
+  % ./hadoop namenode -format
+  % ./start-dfs.sh
+  % ./hadoop dfsadmin -refreshNodes
+  % ./stop-all.sh
+  % ./start-all.sh
+  % ./hadoop dfsadmin -report		# verify that all nodes are OK
+
+  To add a new node, add it to ~hadoop/conf/slaves and run:
+
+    % ~hadoop/hadoop/bin/stop-all.sh
+    % ~hadoop/hadoop/bin/start-all.sh
+    % ~hadoop/hadoop/bin/hadoop dfsadmin -refreshNodes
+
+  The 'hadoop' user communicates from the master (icluster1) to the slaves
+  via ssh, so be sure that icluster1:~hadoop/.ssh/known_hosts includes the 
+  host key of each slave node (from /etc/ssh/ssh_host_rsa_key.pub).
+
+
+MapReduce and MPI
+-----------------
+  Two basic types of programming are done on clusters: Hadoop and MPI.
+
+  MapReduce/HaDoop programming tools (installed on the Icluster):
+
+  1) Distributed processing of large input files.  The software for that is 
+     "MapReduce" (http://labs.google.com/papers/mapreduce.html).  MapReduce
+     uses a framework called HaDoop (http://lucene.apache.org/hadoop/) to 
+     manage the distributed processing over multiple computers (nodes).  
+  
+  MPI programming tools (not installed on the Icluster):
+
+  2) Development and testing of MPI tools.  MPI (http://www.open-mpi.org) is 
+     a standardized API typically used for parallel and distributed computing.
+     MPI tools may include Intel performance tools, SUNs JDK, SBCL (Lisp), 
+     UPC (C), CAF (Fortran), Titanium (Java), CVS, SVN, Git (versioning), 
+     Stow, Python, Octave (scripting), Torque/Maui (batch scheduling).  They 
+     need batch scheduling with no contention for performance and timing tests.
+
+  HaDoop is still in development and does not yet provide batch scheduling, 
+  so it could interfere with the controlled environment that the MPI users
+  need for performance and timing tests.
+  
+  References:
+
+  http://code.google.com/edu/parallel/mapreduce-tutorial.html
+  http://www.alphaworks.ibm.com/tech/mapreducetools/
+  http://www.michael-noll.com/wiki/Writing_An_Hadoop_MapReduce_Program_In_Python
+  http://www.michael-noll.com/wiki/Running_Hadoop_On_Ubuntu_Linux_%28Single-Node_Cluster%29
+  http://www.michael-noll.com/wiki/Running_Hadoop_On_Ubuntu_Linux_%28Multi-Node_Cluster%29
+  Googling for "hadoop run map-reduce" reveals programming examples. 
+
+  http://radlab.cs.berkeley.edu/wiki/Berkeley_Hadoop_SIG
+  https://bspace.berkeley.edu/portal/site/ff98d738-1d6b-4cf4-876f-e15dda302f6f
+  http://www.nytimes.com/2009/03/17/technology/business-computing/17cloud.html
+
+  http://inews.berkeley.edu/articles/Spring2009/cloud-computing
+  http://www.eecs.berkeley.edu/Pubs/TechRpts/2009/EECS-2009-28.pdf
+
+
+Computing Clusters for EECS Researchers
+---------------------------------------
+  The Millennium project (http://www.millennium.berkeley.edu/) provides 
+  clusters for EECS researchers.  
+
+  The Cal-Grid cluster (http://ist.berkeley.edu/is/platforms/unix/calgrid/) 
+  is available to researchers on a recharge basis.  It is supported by the 
+  UC Berkeley IST group (servicedesk@berkeley.edu).  For more information,
+  also see http://inews.berkeley.edu/articles/Fall2008/computing-cluster
+  and http://scs.lbl.gov/.
+
+
+Google/IBM "Cloud Cluster"
+-------------------------
+
+  In 2008/2009, selected classes also used an off-site cluster called the
+  Google/IBM "Cloud Cluster".  For documentation about that, please see
+  http://inst.eecs.berkeley.edu/cgi-bin/pub.cgi?file=ccluster.help.
+
+
+Amazon AWS EC2 Elastic Compute Cloud
+------------------------------------
+
+  The Amazon EC2 Elastic Compute Cloud (http://aws.amazon.com/ec2) is a WEB
+  interface to a virtual computing environment.  Costs range from:
+
+    $0.10/hr to $0.80/hr for compute time plus 
+    $0.10/GB to $0.18/GB for data transfer to and from the EC2.
+
+
+						EECS Instructional Support
+						378/384/386 Cory, 333 Soda
+						inst@eecs.berkeley.edu
+
+

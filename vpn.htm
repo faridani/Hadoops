@@ -1,0 +1,666 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+    <title>Jive Knowledge Base : Getting started with the Cisco AnyConnect VPN Client</title>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <link rel="stylesheet" type="text/css" href="/jivekb/templates/default/style.jsp" title="KB Styles" />
+	<link rel="STYLESHEET" href="http://ist.berkeley.edu/css/ist.css" type="text/css" />
+
+	<!--patch to work around IE6 bugginess.  Yay Microsoft! Also fixes the text size in the footer for all browsers-->
+	<script language="JavaScript" type="text/javascript">
+		if (navigator.userAgent.indexOf("MSIE 6.0") != -1) {
+			document.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/ie6-patches.css\">");
+		} else {
+			document.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/other-patches.css\">");
+		}
+	</script>
+
+    <script language="JavaScript" type="text/javascript" src="/jivekb/scripts/global.js"></script>
+
+
+
+    
+</head>
+<body>
+
+
+<div id="ucbito_top_container">
+<!-- begin /ssi_top_banner.htmlf -->
+	<a href="http://ist.berkeley.edu/" title="link to IST home"><img src="http://ist.berkeley.edu/images/IST.jpg"
+		id="ucbito_top_logo" alt="UC Berkeley IST"
+			width="250" height="70" border="0" /></a>
+
+	<div id="ucbito_top_menu_container">
+		<ul class="ucbito_top_menu">
+			<li><a href="#maincontent">Skip to main content</a></li>
+			<li><a href="http://ist.berkeley.edu/contact-ist.html">Contact <acronym>IST</acronym></a></li>
+		</ul>
+		<!-- The following search form will need to change in the final IST web templates -->
+		<form id="ucbito_top_search_form" name="ucbito_top_search_form"
+			method="get" action="http://ist.berkeley.edu/search/search.php">
+			<label>Search <acronym>IST</acronym>:
+				<input type="text" name="query" size="24" value="" />
+			</label>
+				<input type="hidden" name="server_address" value="http://kb.berkeley.edu" />
+				<input type="hidden" name="server_name" value="IST Knowledge Base" />
+				<input type="hidden" name="do_local_search" value="false" />
+				<input type="hidden" name="context" value="IST" />
+				<input type="submit" name="submit" value="Go" />
+		</form>
+	</div>
+<!-- end /ssi_top_banner.htmlf -->
+
+<!-- begin /ssi_primary_menu_support.htmlf -->
+	<div id="ucbito_primary_menu_container">
+		<div id="ucbito_primary_menu_curve"></div>
+		<div id="ucbito_primary_menu_bar">
+			<div class="ucbito_hidden_label"><acronym>IST</acronym> Site Navigation:</div>
+			<ul id="ucbito_primary_menu">
+				<li><a href="http://ist.berkeley.edu/"><acronym title="Information Services and Technology">IST</acronym> Home</a></li>
+				<li><a href="http://ist.berkeley.edu/getting-started/">Getting Started</a></li>
+				<li><a href="http://ist.berkeley.edu/services/"><acronym>IST</acronym> Services</a></li>
+				<li class="ucbito_selected"><a href="http://ist.berkeley.edu/support/"><acronym>IST</acronym> Support</a></li>
+			</ul>
+		</div>
+	</div>
+<!-- end /ssi_primary_menu_support.htmlf -->
+
+</div>
+
+<!--<div id="ucbito_breadcrumb_container">
+	<a href="/"><acronym>IST</acronym> Home</a> &gt; <acronym>IST</acronym> Support
+</div>-->
+
+<div id="ucbito_left_container">
+	<div id="ucbito_left_menu_box">
+<a name="maincontent"></a>
+		<div class="ucbito_hidden_label"><br />Local Navigation:</div>
+		<div class="ucbito_left_menu">
+	<div class="ucbito_home"><a href="http://ist.berkeley.edu/support/"><acronym>IST</acronym> Support</a></div>
+	<div class="ucbito_selected"><a href="http://knowledgebase.berkeley.edu/">Knowledge Base</a></div>
+	<div><a href="http://ist.berkeley.edu/support/service-desk.html">Service Desk</a></div>
+	<div><a href="http://ist.berkeley.edu/support/training.html">Training Classes</a></div>
+	<div><a href="http://ist.berkeley.edu/support/developer.html">Developer Resources</a></div>
+		</div>
+	</div>
+	<div id="ucbito_left_menu_box_bottom"></div>
+</div>
+
+
+<div id="ucbito_main_container">
+
+<h1><acronym>IST</acronym> Knowledge Base</h1>
+
+
+<div id="jive-entrypage">
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr valign="top">
+    <td width="98%">
+        
+        
+        
+        
+        
+
+
+
+
+
+<div class="jive-breadcrumbs">
+    
+    
+<!-- Start UCB Customization -->
+    	<a href="http://ist.berkeley.edu/">IST Home</a> &raquo; <a href="http://ist.berkeley.edu/support">IST Support</a> &raquo;
+
+<!--    <a href="index.jsp" title="Knowledge Base Home">Knowledge Base Home</a>-->
+    <a href="index.jsp" title="Knowledge Base Home">IST Knowledge Base</a>
+<!-- End UCB Customization -->
+    
+    
+        
+        
+        
+        
+        
+        
+            &raquo;
+            <a href="kbcategory.jspa?categoryID=108"
+            
+                title="VPN and Connectivity."
+            
+            >Connecting from Off Campus</a>
+        
+    
+
+    
+    
+        &raquo;
+        <a href="entry.jspa?categoryID=108&amp;externalID=2665">Document 2665</a>
+    
+    
+    
+</div>
+
+        
+        
+
+
+
+
+
+
+
+
+<br>
+<table cellpadding="3" cellspacing="0" border="0" width="100%" style="border-bottom: 1px #ccc solid;">
+
+<tr>
+
+    <td>
+        <span class="jive-entry-title">
+        [2665]
+        Getting started with the Cisco AnyConnect VPN Client
+        </span>
+        &nbsp;&nbsp;
+        
+    </td>
+    
+    <td align="right"valign="bottom" nowrap>
+        
+            <a href="kbcategory.jspa?categoryID=108"
+            
+               title="VPN and Connectivity."
+            
+            >&laquo; Back to Category</a>
+        
+    </td>
+</tr>
+</table>
+<table cellpadding="3" cellspacing="0" border="0" width="100%">
+<tr>
+    <td>
+        <table cellpadding="3" cellspacing="0" border="0" width="100%">
+        <tr>
+            <td width="1%" align="right" nowrap>
+                
+                Author:
+            </td>
+            <td width="99%">
+                
+                    <a href="accountView.jspa?userID=12">Karl R. Grose</a>,
+                
+                Created on:
+                Apr 10, 2009 12:03 PM
+            </td>
+        </tr>
+        
+        
+        <tr>
+            
+            
+                <td width="1%" align="right" nowrap>
+                    Keywords:
+                </td>
+                <td width="99%">
+            
+            
+                <a href="kbsearch.jspa?searchQuery=AnyConnect">AnyConnect</a>,
+            
+            
+            
+            
+                <a href="kbsearch.jspa?searchQuery=Cisco">Cisco</a>,
+            
+            
+            
+            
+                <a href="kbsearch.jspa?searchQuery=vpn">vpn</a>
+            
+            
+            </td>
+        </tr>
+        
+
+        
+        
+
+        
+        
+            <tr>
+                <td width="1%" align="right" nowrap>
+                    Language:
+                </td>
+                <td width="99%">
+                    English
+                </td>
+            </tr>
+        
+
+        
+        
+
+        </table>
+
+        
+        
+
+        
+
+        
+        
+    </td>
+
+    
+    
+        <td align="right" valign="top">
+            Rating:
+            
+                
+                    
+                        <span class="jive-new-content" title="Below Average"><img src="images/rating-16x16.gif" width="16" height="16" border="0"></span>
+                    
+                
+                    
+                        <span class="jive-new-content" title="Below Average"><img src="images/rating-16x16.gif" width="16" height="16" border="0"></span>
+                    
+                
+                    
+                        <span class="jive-old-content" title="Below Average"><img src="images/rating-none-16x16.gif"  width="16" height="16" border="0"></span>
+                    
+                
+                    
+                        <span class="jive-old-content" title="Below Average"><img src="images/rating-none-16x16.gif"  width="16" height="16" border="0"></span>
+                    
+                
+                    
+                        <span class="jive-old-content" title="Below Average"><img src="images/rating-none-16x16.gif"  width="16" height="16" border="0"></span>
+                    
+                
+            
+        </td>
+    
+</tr>
+</table>
+
+        
+        
+
+
+
+
+
+
+
+        <br>
+
+        <div class="jive-button">
+        <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td>
+                
+                
+
+
+
+
+
+
+
+
+
+<table cellpadding="3" cellspacing="0" border="0">
+<tr>
+    
+    
+    
+    <td>
+        <a href="entry!default.jspa?categoryID=108&amp;externalID=2665&amp;printable=true"
+         ><img src="images/print-16x16.gif" width="16" height="16" border="0" alt="Click for a printer friendly version of this document"></a>
+    </td>
+    <td>
+        <span class="jive-button-label">
+        <a href="entry!default.jspa?categoryID=108&amp;externalID=2665&amp;printable=true"
+         title="Click for a printer friendly version of this document">Printer Friendly</a>
+        </span>
+    </td>
+
+    
+    
+
+
+</tr>
+</table>
+            </td>
+        </table>
+        </div>
+        <br>
+
+        
+        <table id="jive-entry" cellpadding="3" cellspacing="0" border="0" width="100%">
+        <tr>
+            <td class="jive-entry-text">
+                
+                    <b>Check to see that you are eligible to use the VPN Service</b> <br /> To verify your eligibility for using the Campus VPN service (and other CalNet-authenticated network services), please visit the <a href="https://net-sec2.berkeley.edu/cgi-bin/service_eligibility/report">Network Service Eligibility Report</a> page. <br />  <br /> <b>Getting the Software</b> <br /> The AnyConnect VPN Client versions are available here: <br />  <br /> &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://ist.berkeley.edu/software-central/cisco-vpn">Cisco VPN</a> <br />  <br /> When prompted, use your CalNetID and passphrase to access and save the software package. <br />  <br /> <b>More Software Options</b> <br /> <ul>
+<li><a href="http://www.cisco.com/en/US/docs/security/vpn_client/anyconnect/anyconnect24/release/notes/rn-ac2.4-android.html">Release Notes for Cisco AnyConnect Secure Mobility Client 2.4 for Android</a></li>
+<li><a href="http://itunes.apple.com/us/app/cisco-anyconnect/id392790924?mt=8">Cisco AnyConnect Secure Mobility Client for iPhone and iPad</a> (from the Apple iTunes site)</li>
+<li><a href="https://afs.berkeley.edu/fd/?path=/afs/berkeley.edu/group/ist/sns/share/Cisco/DART/">Windows troubleshooting tool (DART)</a> (When prompted, use your CalNetID and passphrase for access.)</li>
+<li>An AnyConnect-compatible alternative for Linux/FreeBSD: <a href="http://afs.berkeley.edu/~jeblair/openconnect/">Using OpenConnect and Network Manager with UC Berkeley's VPN Service</a></li>
+<li>To use the OpenConnect port on PC-BSD/FreeBSD, follow the <b>Getting started</b> instructions on the main <a href="http://www.infradead.org/openconnect.html">OpenConnect web site</a> using <b></b><a href="https://ucbvpn.berkeley.edu">https://ucbvpn.berkeley.edu</a></b> as the target server. This has been found to work on PC-BSD 8.x, 9.0 and on FreeBSD 8.x-RELEASE, 9.0-CURRENT.</li>
+<li>See the script on <a href="http://fahhem.com/ucbvpn/">Fahrzin Hemmati's page</a> for using OpenConnect with Debian and related Linux. Questions about using Fahrzin's script can be posted via the blog link on that page.</li>
+<li><a href="https://afs.berkeley.edu/fd/?path=/afs/berkeley.edu/group/ist/sns/share/Cisco/2.5.3055">Access the 2.5.3055 release files (for early adopters and testers)</a>; <a href="http://www.cisco.com/en/US/docs/security/vpn_client/anyconnect/anyconnect25/release/notes/anyconnect25rn.html">Release Notes</a>; <a href="http://www.cisco.com/en/US/docs/security/vpn_client/anyconnect/anyconnect25/administration/guide/anyconnectadmin25.html">Admin Guide</a> (When prompted, use your CalNetID and passphrase for access. For best results, remove any prior Cisco AnyConnect client version before installing a new release version.)</li>
+<li><a href="https://afs.berkeley.edu/fd/?path=/afs/berkeley.edu/group/ist/sns/share/Cisco/3.0.5080">Access the 3.0.5080 release files (for early adopters and testers)</a>; <a href="http://www.cisco.com/en/US/docs/security/vpn_client/anyconnect/anyconnect30/release/notes/anyconnect30rn.html">Release Notes</a>; <a href="http://www.cisco.com/en/US/docs/security/vpn_client/anyconnect/anyconnect30/administration/guide/anyconnectadmin30.html">Admin Guide</a> (When prompted, use your CalNetID and passphrase for access. For best results, remove any prior Cisco AnyConnect client version before installing a new release version.)</li></ul><br /><b>Installation and Configuration</b> <br /> Run the downloaded package file to install the VPN client software. The <b>Start before login GINA</b> module for Windows is only needed if you want to establish a VPN session before logging in to your Windows desktop, so that campus resources such as CalNetAD are available at login. <br />  <br /> <ul><li>To configure for the campus VPN service, after you've installed the AnyConnect client, run it to open its main window. On the <b>Connection</b> tab, in the field marked <b>Connect to:</b> enter <b>ucbvpn.berkeley.edu</b> as the hostname. <b>Note:</b> This hostname differs from the hostname used for the previously offered VPN service; please check carefully that you are entering the correct name here. Host based security software may need to be adjusted for the new VPN software client. For example, older versions of the campus distributed Symantec Client Security software must be configured to trust the campus VPN concentrator; see more below.</li>
+<li>After you type in the hostname, click the <b>Connect</b> button if necessary to display the Group menu along with prompts for Username and Password. Choose from the <b>1-Campus_VPN</b>, <b>2-Campus_VPN_Full_Tunnel</b>, or <b>3-Library_VPN</b> groups. IPv6-enabled versions of the first two options are also available for use with IPv6 destinations. (For information on what these terms mean, please see the <a href="http://net.berkeley.edu/vpn/">Campus VPN Service</a> page.) Enter your CalNet ID and passphrase, then click the <b>Connect</b> button to log into the VPN. Once you've logged in, make sure you're still able to access the Internet.</li>
+<li>If you are using the Symantec Client Security (SCS) security suite and have not upgraded to a recent version, you may need to add the hostname <b>ucbvpn.berkeley.edu</b> as a trusted network address and explicitly to permit the <b>vpnagent.exe</b> program to make a network connection. This is not necessary for the newer Symantec Endpoint Protection (SEP) security suite which replaces SCS.</li>
+<li>If you're accessing resources protected by a firewall that restricts access by IP address, you may need to modify (or request a modification to) the firewall rules to allow access via the VPN. The IPv4 subnet for the full-tunnel VPN is 136.152.208.0/23 and the IPv4 subnet for the split-tunnel VPN is 10.136.0.0/23. For the IPv6 Full Tunnel: 2607:f140:800:80::10 - 2607:f140:800:80::2f9. See the <b>Campus VPN Service</b> link below for current information.</li>
+<li>A workaround exists for using the VPN client with OpenAFS on Windows: Use the 2-Campus_VPN_Full_Tunnel profile rather than the 1-Campus_VPN one, or, if using the 1-Campus_VPN profile, change the static IP address for the Microsoft Loopback adapter to, for example, 10.15.254.253 instead of 10.254.254.253 since the latter IP address overlaps with one of the RFC1918 networks defined by the new split tunnel profile.</li>
+<li>Documentation for using Library resources via the campus VPN is available: <a href="http://www.lib.berkeley.edu/Help/vpn.html">VPN (Virtual Private Network)</a></li>
+<li><a href="http://www.cisco.com/en/US/products/ps8411/prod_release_notes_list.html">Cisco AnyConnect VPN Client Release Notes</a></li>
+<li><a href="http://www.cisco.com/en/US/products/ps10884/prod_release_notes_list.html">Cisco AnyConnect Secure Mobility Client Release Notes</a></li>
+<li><a href="http://www.cisco.com/en/US/products/ps8411/tsd_products_support_series_home.html">Cisco AnyConnect VPN Client Documentation</a></li>
+<li><a href="http://www.cisco.com/en/US/products/ps10884/tsd_products_support_series_home.html">Cisco AnyConnect Secure Mobility Client Documentation</a></li>
+<li><a href="http://www.cisco.com/en/US/docs/security/vpn_client/anyconnect/anyconnect30/user/messages/ac30-vpn-user-msgs.html">Cisco AnyConnect Secure Mobility Client VPN User Messages, Release 3.0</a></li>
+<li><a href="http://www.cisco.com/en/US/products/ps6120/products_tech_note09186a00809b4754.shtml">AnyConnect VPN Client Troubleshooting Tech Note</a></li>
+<li><a href="http://www.net.berkeley.edu/vpn/">Campus VPN Service</a></li>
+</ul><br /><b>Usage Tips</b> <br /> <ul><li>You may find the client option to <b>Enable local LAN access (if configured)</b> useful for accessing devices on your local network such as a printer. We have reports that this setting has helped to allow proper general operation in some cases, so it may also be worth trying if you are having trouble using the VPN after the typical local firewall-related issues have been eliminated from consideration. Find this option (except on Mac OS X) on the <b>Advanced.../Preferences</b> tab, (on versions 2.x, this option is found by using the <b>Preferences button</b><img src="servlet/KbServlet/downloadImage/2665-102-338/snapshot2.png">to the right of the <b>Connect to:</b> field on the <b>Connection</b> tab):<br/><br/>Ver. 3.x: <img src="servlet/KbServlet/downloadImage/2665-102-388/ac-local-lan.png"><br/>Ver. 2.x: <img src="servlet/KbServlet/downloadImage/2665-102-337/snapshot1.png"><br/><br/>On Mac OS X, select the <b>Cisco AnyConnect VPN Client/Preferences</b> menu.</li>
+<li>For version 3.x of the <b>AnyConnect Secure Mobility Client</b> for Windows, if the optional <b>Start Before Logon (SBL)</b> feature is not working for you, try adding the example profile file <b>example_sbl_profile.xml</b> from the <b>Attachments</b> to this article into the <b>C:\ProgramData\Cisco\Cisco AnyConnect Secure Mobility Client\Profile</b> directory (this location is for Windows 7; see the Cisco documentation for the default profile directory locations for other Windows OSes), or edit any existing profile file there as in the provided example. In some cases, removing then reinstalling the SBL module (using the <b>anyconnect-gina-win-3.x-pre-deploy-k9.msi</b> file), or the Secure Mobility Client, or both, (and always installing the SBL module last) may be needed in addition to the client profile file which enables the SBL feature.
+</ul>
+                
+            </td>
+        </tr>
+        </table>
+        <br>
+
+        
+        <table cellpadding="3" cellspacing="0" border="0" width="100%" style="border-bottom: 1px #ccc solid;">
+		<tr>
+			<td>
+				<b>Need more help?</b>
+			</td>
+		</tr>
+		</table>
+		
+		 		
+		
+		<!--Parent Category ID is: 108-->
+
+		<p>If you have comments about this article or if it does not solve your problem,
+		you can <a href="/cgi-bin/help_referral.pl?articleID=2665&categoryID=108&articleTitle=Getting started with the Cisco AnyConnect VPN Client">
+		get further help from a consultant</a>.</p>
+
+        <br>
+        
+
+
+        
+        
+            
+
+
+
+
+
+
+
+
+
+<form action="entryRate.jspa?categoryID=108&amp;externalID=2665" method="post">
+<table cellpadding="3" cellspacing="0" border="0" width="100%" style="border-bottom: 1px #ccc solid;">
+<tr>
+    <td>
+        <b>Document Rating</b>
+    </td>
+</tr>
+</table>
+
+<table cellpadding="3" cellspacing="0" border="0" width="100%">
+<tr valign="top">
+    <td colspan="2">
+        Rating:
+        
+            
+                
+                    <span class="jive-new-content" title="Below Average"><img src="images/rating-16x16.gif" width="16" height="16" border="0"></span>
+                
+            
+                
+                    <span class="jive-new-content" title="Below Average"><img src="images/rating-16x16.gif" width="16" height="16" border="0"></span>
+                
+            
+                
+                    <span class="jive-old-content" title="Below Average"><img src="images/rating-none-16x16.gif"  width="16" height="16" border="0"></span>
+                
+            
+                
+                    <span class="jive-old-content" title="Below Average"><img src="images/rating-none-16x16.gif"  width="16" height="16" border="0"></span>
+                
+            
+                
+                    <span class="jive-old-content" title="Below Average"><img src="images/rating-none-16x16.gif"  width="16" height="16" border="0"></span>
+                
+            
+        
+    </td>
+</tr>
+
+
+
+    
+        
+        
+            <tr>
+                <td width="1%" nowrap>
+                    Your Rating:
+                </td>
+                <td width="99%">
+                    
+                    
+                        <input type="radio" name="rating" value="1" id="rb0"><label for="rb0">Poor</label>     &nbsp;
+                    
+                        <input type="radio" name="rating" value="2" id="rb1"><label for="rb1">Below Average</label>     &nbsp;
+                    
+                        <input type="radio" name="rating" value="3" id="rb2"><label for="rb2">Average</label>     &nbsp;
+                    
+                        <input type="radio" name="rating" value="4" id="rb3"><label for="rb3">Above Average</label>     &nbsp;
+                    
+                        <input type="radio" name="rating" value="5" id="rb4"><label for="rb4">Exceptional</label>     &nbsp;
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="submit" name="rateButton" value="Rate Document">
+                </td>
+            </tr>
+        
+    
+
+</table>
+</form>
+        
+
+        <br>
+
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+    </td>
+    <td width="1%"><img src="images/blank.gif" width="10" height="1" border="0" alt=""></td>
+    <td width="1%" class="jive-top-table">
+        
+        
+
+<!--
+Start UCB Customization to disable account box if a user is not logged in -->
+
+
+<!--do nothing-->
+
+
+
+<!-- End UCB Customization to disable account box
+ -->
+
+
+        
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+    <div class="jive-portlet-box">
+    <table cellpadding="3" cellspacing="0" border="0" width="200">
+    <thead>
+    <tr>
+        <th>
+            Attachments
+        
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="jive-sidebar-entry">
+        <td>
+            <table cellpadding="2" cellspacing="0" border="0" width="100%">
+            
+                
+                <tr class="jive-sidebar-entry">
+                    <td width="1%">
+                        <a href="servlet/KbServlet/download/2665-102-220/example_sbl_profile.xml" target="_new"
+                         ><img src="
+                                        
+                                        
+                                        
+                                    servlet/KbServlet?attachImage=true&amp;attachment=220&amp;contentType=text%2Fxml" hspace="2" vspace="1" border="0" width="16" height="16" alt="Click to download this attachment"></a>
+                    </td>
+                    <td width="99%">
+                        <span class="nobreak">
+                        <a href="servlet/KbServlet/download/2665-102-220/example_sbl_profile.xml"
+                         title="Click to download this attachment - example_sbl_profile.xml"  target="_new"
+                         >example_sb...ile.xml</a> <span class="jive-small-font">(388 bytes)</span></span>
+                    </td>
+                </tr>
+            
+            </table>
+        </td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+
+
+        
+
+
+
+
+
+
+
+<div class="jive-portlet-box">
+<table cellpadding="3" cellspacing="0" border="0" width="200">
+<thead>
+<tr>
+    <th>
+        Related Documents
+        
+    </th>
+</tr>
+</thead>
+<tbody>
+<tr class="jive-sidebar-entry">
+    <td>
+        <table cellpadding="2" cellspacing="0" border="0" width="100%">
+        
+            <tr class="jive-sidebar-entry">
+                <td width="100%"><span class="nobreak">No Related Documents</span></td>
+            </tr>
+        
+        </table>
+    </td>
+</tr>
+</tbody>
+</table>
+</div>
+    </td>
+</tr>
+</table>
+</div>
+
+<br /><br />
+
+</div>
+
+		<table id="jive-footer" cellpadding="6" cellspacing="0" border="0" width="100%">
+		<tr>
+			<td>
+                    <a href="/jivekb/index.jsp">Knowledge Base Home</a>
+
+					|
+					<a href="/jivekb/login!default.jspa">Login</a>
+
+
+				|
+				<a href="/jivekb/help.jspa"> Help</a>
+
+
+					|
+					<a href="/jivekb/kbsearch.jspa">Search</a>
+
+				<br>
+				<a href="http://www.jivesoftware.com/poweredby/" target="_blank">Powered by Jive Software</a>
+			</td>
+		</tr>
+		</table>
+
+
+
+<div id="ucbito_bottom_container">
+<!-- begin /ssi_context_menu.htmlf -->
+	<div class="ucbito_bottom_nav">
+<span><a href="http://www.berkeley.edu/">UC Berkeley</a></span>
+<span><a href="http://cio.berkeley.edu/">UC Berkeley CIO</a></span>
+<span><a href="http://comp-resources.berkeley.edu/">Campuswide IT Services</a></span>
+	</div>
+<!-- end /ssi_context_menu.htmlf -->
+
+
+	<div id="ucbito_copyright_and_date">
+Copyright 2006 The Regents of the University of California.
+	</div>
+
+</div>
+
+<div id="ucbito_bottom_bar"></div>
+
+
+
+
+</body>
+</html>
